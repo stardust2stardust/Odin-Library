@@ -30,15 +30,16 @@
                 </div>
 
                 <div class="radio-input">
-
-
                     <input type="radio" id="hasRead" name="read" value="true">
                     <label for="hasRead">Read it</label>
 
                     <input type="radio" id="notRead" name="read" value="false">
                     <label for="notRead">Not read yet</label>
-
-
+                </div>
+                <div class="rating">
+                    <label for="rating">Rating: </label>
+                    <input type="range" name="rating" id="rating" min="1" max="10" step=".5" value="250000">
+                    <output class="rating-output" for="rating"></output>
                 </div>
             </div>
 
@@ -63,7 +64,7 @@
             <p>Patrick Rothfuss</p>
             <p>994 pages</p>
             <p>Not read yet</p>
-            <p>8/10</p>
+            <p>n/a</p>
 
         </div>
     </main>

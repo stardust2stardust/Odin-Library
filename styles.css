@@ -67,8 +67,8 @@ form {
 .inputs {
     display: flex;
     padding: 15px;
-    gap: 15px;
-    justify-content: center;
+    gap: 25px;
+    justify-content: space-around;
 }
 
 .text-inputs>input {
@@ -79,10 +79,20 @@ form {
     text-align: left;
 }
 
+#pages {
+    width: 50px;
+}
+
+
+
 label {
     color: var(--bright);
     font-weight: 700;
     font-size: 1.2rem;
+}
+
+output {
+    color: var(--bright)
 }
 
 .submit-btn {

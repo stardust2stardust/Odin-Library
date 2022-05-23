@@ -8,6 +8,9 @@ const authorInput = document.querySelector('#author')
 const pagesinput = document.querySelector('#pages')
 const hasReadInput = document.querySelectorAll('input[name="read"]')
 const main = document.querySelector('main')
+const ratingInput = document.querySelector('#rating')
+const ratingOutput = document.querySelector('.rating-output')
+
 
 
 function Book(title, author, pages, hasRead) {
@@ -39,7 +42,12 @@ function addBookToLibrary() {
 }
 
 function showForm() {
+    addBookBtn.classList.add('show-hide')
     form.classList.remove('show-hide')
+    ratingOutput.innerText = ratingInput.value
+    ratingInput.addEventListener('input', () => {
+        ratingOutput.innerText = ratingInput.value
+    })
 }
 
 function loopOverBooks(listOfBooks) {
@@ -51,21 +59,22 @@ function loopOverBooks(listOfBooks) {
 }
 function createNewCard(element) {
     let card = document.createElement('div');
-
     let h2 = document.createElement('h2')
     let pAuthor = document.createElement('p')
     let pPages = document.createElement('p')
     let pRead = document.createElement('p')
+    let pRating = docoument.createElement('p')
     h2.innerText = element.title
     pAuthor.innerText = element.author
-    pPages.innerText = element.pages
+    pPages.innerText = `${element.pages} pages`
     pRead.innerText = element.hasRead
+    pRating.innerText = `${element.rating}/10`
     main.appendChild(card)
     card.appendChild(h2)
     card.appendChild(pAuthor)
     card.append(pPages)
     card.append(pRead)
-
+    card.append(pRating)
     card.classList.add('card');
 }
 
