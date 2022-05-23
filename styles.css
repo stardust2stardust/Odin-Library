@@ -122,9 +122,3 @@ button {
 .card>p {
     font-size: 1.2rem;
 }
-
-.card>div {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}

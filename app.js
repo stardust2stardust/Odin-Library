@@ -46,20 +46,20 @@ function loopOverBooks(listOfBooks) {
     listOfBooks = myLibrary
     myLibrary.forEach(element => {
         console.log(element);
-        createNewCard();
+        createNewCard(element);
     });
 }
-function createNewCard() {
+function createNewCard(element) {
     let card = document.createElement('div');
 
     let h2 = document.createElement('h2')
     let pAuthor = document.createElement('p')
     let pPages = document.createElement('p')
     let pRead = document.createElement('p')
-    h2.innerText = "New Book Title"
-    pAuthor.innerText = "author goes here"
-    pPages.innerText = "pages goes here"
-    pRead.innerText = "yes or no"
+    h2.innerText = element.title
+    pAuthor.innerText = element.author
+    pPages.innerText = element.pages
+    pRead.innerText = element.hasRead
     main.appendChild(card)
     card.appendChild(h2)
     card.appendChild(pAuthor)
