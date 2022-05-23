@@ -15,24 +15,57 @@
         <h1>My Books</h1>
     </header>
     <div class="form-area">
+        <div class="add-book-btn">
+            <button>Add Book</button>
+        </div>
         <form action="">
-            <div class="add-book">
-                <h2>Add Book</h2>
-                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                    <path fill="currentColor"
-                        d="M17,13H13V17H11V13H7V11H11V7H13V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
-                </svg>
+            <div class="inputs">
+                <div class="text-inputs">
+                    <label for="title">Title</label>
+                    <input type="text" id="title">
+                    <label for="author">Author</label>
+                    <input type="text" id="author">
+                    <label for="pages">Pages</label>
+                    <input type="text" id="pages">
+                </div>
+
+                <div class="radio-input">
+
+
+                    <input type="radio" id="hasRead" name="contact" value="email">
+                    <label for="hasRead">Read it</label>
+
+                    <input type="radio" id="notRead" name="contact" value="phone">
+                    <label for="notRead">Not read yet</label>
+
+
+                </div>
             </div>
 
+            <div class="submit-btn">
+                <button type="submit">Submit</button>
+            </div>
 
         </form>
     </div>
     <main>
         <div class="card">
-            <h2>Title</h2>
-            <p>Author</p>
-            <p>Pages</p>
-            <p>read it</p>
+            <h2>The Name of the Wind</h2>
+            <p>Patrick Rothfuss</p>
+            <div>
+                <p>662</p>
+                <p>Read</p>
+            </div>
+
+        </div>
+        <div class="card">
+            <h2>The Wise Man's Fear</h2>
+            <p>Patrick Rothfuss</p>
+            <div>
+                <p>994</p>
+                <p>Read</p>
+            </div>
+
         </div>
     </main>
 
@@ -40,3 +73,9 @@
 </body>
 
 </html>
+
+<!-- Plus icon -->
+<!-- <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M17,13H13V17H11V13H7V11H11V7H13V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+                </svg> -->
