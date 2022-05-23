@@ -60,6 +60,10 @@ form {
     width: 100%;
 }
 
+.show-hide {
+    display: none;
+}
+
 .inputs {
     display: flex;
     padding: 15px;
