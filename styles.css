@@ -52,7 +52,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--medium);
+    background-color: var(--light);
     gap: 10px;
 }
 
@@ -83,16 +83,37 @@ form {
     width: 50px;
 }
 
+input {
+    font-size: 1.4rem;
+}
 
+input[type=range]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    background: var(--bright);
+    border-radius: 10px;
+}
+
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: var(--dark);
+}
 
 label {
-    color: var(--bright);
+    color: var(--dark);
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 output {
     color: var(--bright)
+}
+
+button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    border: none;
 }
 
 .submit-btn {
@@ -102,7 +123,7 @@ output {
 main {
     padding: 40px;
     gap: 20px;
-    background-color: var(--light);
+    background-color: var(--medium);
     height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -111,7 +132,6 @@ main {
 
 .card {
     padding: 15px;
-
     height: fit-content;
     background-color: var(--bright);
     display: flex;
@@ -122,12 +142,7 @@ main {
     gap: 10px;
 }
 
-button {
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    border: none;
-}
+
 
 .card>p {
     font-size: 1.2rem;
