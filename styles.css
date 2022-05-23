@@ -1,1 +1,63 @@
+:root {
+    --dark: #1e3a8a;
+    --medium: #3b82f6;
+    --light: #93c5fd;
+    --bright: #dbeafe;
+}
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+svg {
+    display: inline-block;
+}
+
+
+body {
+    height: 100vh;
+    background-color: var(--bright);
+    display: flex;
+    flex-direction: column;
+
+}
+
+header {
+
+    background-color: var(--dark);
+    color: var(--bright);
+
+}
+
+.form-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--medium);
+}
+
+main {
+    padding: 40px;
+    gap: 20px;
+    background-color: var(--light);
+    height: 100%;
+}
+
+
+
+.add-book {
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    width: 200px;
+    height: 200px;
+    background-color: var(--bright);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
