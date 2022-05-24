@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>Library</title>
 </head>
@@ -29,24 +32,26 @@
                     <label for="pages">Pages</label>
                     <input type="text" id="pages" required />
                 </div>
+                <div class="nontext-inputs">
+                    <div class="radio-input">
+                        <input type="radio" id="hasRead" name="read" value="true">
+                        <label for="hasRead">Read it</label>
 
-                <div class="radio-input">
-                    <input type="radio" id="hasRead" name="read" value="true">
-                    <label for="hasRead">Read it</label>
-
-                    <input type="radio" id="notRead" name="read" value="false">
-                    <label for="notRead">Not read yet</label>
-                </div>
-                <div class="rating">
-                    <label for="rating">Rating: </label>
-                    <input type="range" name="rating" id="rating" min="1" max="10" step=".5" value="250000">
-                    <output class="rating-output" for="rating"></output>
+                        <input type="radio" id="notRead" name="read" value="false">
+                        <label for="notRead">Not read yet</label>
+                    </div>
+                    <div class="rating">
+                        <label for="rating">Rating: </label>
+                        <input type="range" name="rating" id="rating" min="1" max="10" step=".5" value="1">
+                        <output class="rating-output" for="rating"></output>
+                    </div>
                 </div>
             </div>
 
-            <div class="submit-btn">
-                <input type="submit" />
 
+            <div class="submit-cancel">
+                <button class="submit-btn" type="submit">Submit</button>
+                <button class="cancel-btn">Cancel</button>
             </div>
 
         </form>
@@ -70,6 +75,10 @@
 
         </div>
     </main>
+    <p>Photo by <a
+            href="https://unsplash.com/photos/8muUTAmcWU4?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">Jez
+            Timms</a> on Unsplash</p>
+
 
     <script src="app.js"></script>
 </body>
