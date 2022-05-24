@@ -1,8 +1,14 @@
 :root {
-    --dark: #1e293b;
-    --medium: #475569;
-    --light: #94a3b8;
-    --bright: #e2e8f0;
+    --primary-dark: #333d29;
+    --primary-medium: #656d4a;
+    --primary-light: #a4ac86;
+
+    --secondary-dark: #582f0e;
+    --secondary-medium: #7f4f24;
+    --secondary-light: #a68a64;
+
+    --darkest: #0c1202;
+    --lightest: #f4f5f0;
 }
 
 *,
@@ -13,11 +19,11 @@
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 p,
@@ -33,16 +39,15 @@ svg {
 
 body {
     height: 100vh;
-    background-color: var(--bright);
     display: flex;
     flex-direction: column;
-
+    font-family: 'Libre Baskerville', serif;
 }
 
 header {
     padding: 20px;
-    background-color: var(--dark);
-    color: var(--bright);
+    background-color: var(--darkest);
+    color: var(--lightest);
 
 }
 
@@ -52,7 +57,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--light);
+    background-color: var(--primary-light);
     gap: 10px;
 }
 
@@ -66,9 +71,11 @@ form {
 
 .inputs {
     display: flex;
+    flex-direction: column;
     padding: 15px;
     gap: 25px;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
 }
 
 .text-inputs>input {
@@ -79,34 +86,43 @@ form {
     text-align: left;
 }
 
+.nontext-inputs {
+    display: flex;
+    gap: 50px;
+}
+
 #pages {
     width: 50px;
 }
 
+.radio-input>label {
+    margin-right: 15px;
+}
+
 input {
-    font-size: 1.4rem;
+    font-size: 1rem;
+    background: var(--lightest);
 }
 
 input[type=range]::-webkit-slider-runnable-track {
     -webkit-appearance: none;
-    background: var(--bright);
+    background: var(--neutral);
     border-radius: 10px;
 }
 
 
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    background: var(--dark);
+    background: var(--dark-olive);
 }
 
 label {
-    color: var(--dark);
-    font-weight: 700;
-    font-size: 1.4rem;
+    color: var(--dark-olive);
+    font-size: 1.2rem;
 }
 
 output {
-    color: var(--bright)
+    color: var(--dark)
 }
 
 button {
@@ -114,16 +130,37 @@ button {
     border-radius: 10px;
     font-size: 1.2rem;
     border: none;
+    background-color: var(--primary-dark);
+    color: var(--lightest);
 }
 
-.submit-btn {
-    padding: 15px;
+.submit-cancel {
+    padding: 20px 0px 10px 0px;
+}
+
+input[type="submit"] {
+    padding: 5px 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: var(--bright);
+    color: var(--dark);
+    border-radius: 10px;
+    border: none;
+}
+
+button:hover {
+    background-color: var(--prim);
+    border: 2px solid var(--medium);
 }
 
 main {
     padding: 40px;
     gap: 20px;
-    background-color: var(--medium);
+
+    background-image: url("images/jez-timms-8muUTAmcWU4-unsplash.jpg");
+    background-size: contain;
+
+
     height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -133,17 +170,23 @@ main {
 .card {
     padding: 15px;
     height: fit-content;
-    background-color: var(--bright);
+    background-color: var(--primary-dark);
+    opacity: 0.9;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px var(--medium);
+    box-shadow: 5px 5px 10px var(--primary-light);
     gap: 10px;
 }
 
 
 
 .card>p {
-    font-size: 1.2rem;
+    font-size: 1rem;
+}
+
+.card>p,
+.card>h2 {
+    color: var(--lightest)
 }

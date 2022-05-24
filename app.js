@@ -14,7 +14,7 @@ function Book(title, author, pages, hasRead, rating) {
 
 function showForm() {
     const form = document.querySelector('form')
-    const submit = document.querySelector('input[type="submit"]')
+    const submit = document.querySelector('.submit-btn')
     addBookBtn.classList.add('show-hide')
     form.classList.remove('show-hide')
     submit.addEventListener('click', submitForm);
