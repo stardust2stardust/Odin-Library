@@ -6,7 +6,6 @@ const submit = document.querySelector('.submit-btn>button')
 const titleInput = document.querySelector('#title')
 const authorInput = document.querySelector('#author')
 const pagesinput = document.querySelector('#pages')
-// const hasReadInput = document.querySelectorAll('input[name="read"]')
 const main = document.querySelector('main')
 const ratingInput = document.querySelector('#rating')
 const ratingOutput = document.querySelector('.rating-output')
@@ -28,6 +27,8 @@ function Book(title, author, pages, hasRead, rating) {
 function submitForm(e) {
     e.preventDefault();
     addBookToLibrary();
+    addBookBtn.classList.remove('show-hide');
+    form.classList.add('show-hide')
 }
 
 function addBookToLibrary() {
@@ -47,6 +48,10 @@ function addBookToLibrary() {
 function showForm() {
     addBookBtn.classList.add('show-hide')
     form.classList.remove('show-hide')
+    titleInput.value = '';
+    authorInput.value = '';
+    pagesinput.value = '';
+    hasRead.value = 'false';
     ratingOutput.innerText = ratingInput.value
     ratingInput.addEventListener('input', () => {
         ratingOutput.innerText = ratingInput.value
@@ -89,8 +94,8 @@ function createNewCard(element) {
 
 // addBookToLibrary();
 
-const book01 = new Book("Wizard's First Rule", "Terry Goodkind", 836, true);
-const book02 = new Book("Stone of Tears", "Terry Goodkind", 979, true)
+const book01 = new Book("Wizard's First Rule", "Terry Goodkind", 836, true, 10);
+const book02 = new Book("Stone of Tears", "Terry Goodkind", 979, true, 8.5)
 myLibrary.push(book01)
 myLibrary.push(book02)
 
