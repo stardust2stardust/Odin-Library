@@ -50,7 +50,7 @@ function submitForm(e) {
 
 
 function addBookToLibrary(title, author, pages) {
-    let hasRead = document.querySelector('input[name="read"]').value;
+    let hasRead = document.querySelector('input[name=read]:checked').value;
     let rating = document.querySelector('#rating').value;
 
     const newBook = new Book(title, author, pages, hasRead, rating);
@@ -79,7 +79,7 @@ function createNewCard(newBook) {
     h2.innerText = newBook.title;
     pAuthor.innerText = newBook.author;
     pPages.innerText = `${newBook.pages} pages`;
-    if (newBook.hasRead === true) {
+    if (newBook.hasRead === 'true') {
         pRead.innerText = 'Read it';
         pRating.innerText = `${newBook.rating}/10`;
     } else {
