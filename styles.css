@@ -23,7 +23,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 p,
@@ -168,25 +168,41 @@ main {
 }
 
 .card {
-    padding: 15px;
+
     height: fit-content;
     background-color: var(--primary-dark);
     opacity: 0.9;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    border: 1px solid var(--primary-dark);
     border-radius: 10px;
-    box-shadow: 5px 5px 10px var(--primary-light);
+    box-shadow: 0px 0px 10px var(--primary-light);
     gap: 10px;
 }
 
-
-
-.card>p {
-    font-size: 1rem;
+.book-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding-bottom: 10px;
 }
 
-.card>p,
-.card>h2 {
-    color: var(--lightest)
+.info-p {
+    font-size: 0.9rem;
+    color: var(--lightest);
+    padding-left: 10px;
+}
+
+.book-title {
+    width: 100%;
+    margin: 0px;
+    padding: 10px;
+    color: var(--lightest);
+    background-color: var(--darkest);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px 10px 0px 0px;
 }
