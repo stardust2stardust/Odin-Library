@@ -33,7 +33,8 @@ h2 {
 }
 
 svg {
-    display: inline-block;
+    display: block;
+    color: var(--lightest);
 }
 
 
@@ -48,6 +49,20 @@ header {
     padding: 20px;
     background-color: var(--darkest);
     color: var(--lightest);
+
+}
+
+.add-book-btn {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: var(--darkest);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.add-book-btn:hover {
+    background-color: var(--primary-dark);
 
 }
 
@@ -126,31 +141,33 @@ output {
 }
 
 button {
-    padding: 5px 10px;
-    border-radius: 10px;
+    /* padding: 5px 10px; */
+    background-color: transparent;
     font-size: 1.2rem;
     border: none;
-    background-color: var(--primary-dark);
     color: var(--lightest);
+
 }
 
 .submit-cancel {
     padding: 20px 0px 10px 0px;
+
 }
 
-input[type="submit"] {
+.submit-btn,
+.cancel-btn {
+    background-color: var(--primary-dark);
     padding: 5px 10px;
     font-size: 1rem;
     font-weight: 700;
-    background-color: var(--bright);
-    color: var(--dark);
+    color: var(--lightest);
     border-radius: 10px;
     border: none;
 }
 
-button:hover {
-    background-color: var(--prim);
-    border: 2px solid var(--medium);
+.submit-btn:hover,
+.cancel-btn:hover {
+    background-color: var(--primary-medium);
 }
 
 main {
@@ -170,7 +187,7 @@ main {
 .card {
 
     height: fit-content;
-    background-color: var(--primary-dark);
+    background-color: var(--darkest);
     opacity: 0.9;
     display: flex;
     flex-direction: column;
@@ -178,20 +195,29 @@ main {
     border: 1px solid var(--primary-dark);
     border-radius: 10px;
     box-shadow: 0px 0px 10px var(--primary-light);
-    gap: 10px;
+
 }
 
+/* 
+.card:hover {
+    background-color: var(--primary-medium);
+    box-sizing: unset;
+    border: 3px solid var(--primary-dark)
+} */
+
 .book-info {
+    padding-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
-    padding-bottom: 10px;
+
 }
 
 .info-p {
     font-size: 0.9rem;
     color: var(--lightest);
+    text-align: left;
     padding-left: 10px;
 }
 
@@ -199,10 +225,30 @@ main {
     width: 100%;
     margin: 0px;
     padding: 10px;
-    color: var(--lightest);
-    background-color: var(--darkest);
+    color: var(--darkest);
+    background-color: var(--primary-light);
     display: flex;
     justify-content: flex-start;
     align-items: center;
     border-radius: 10px 10px 0px 0px;
+    opacity: 0.9rem;
+}
+
+.update {
+    display: flex;
+    gap: 5px;
+    align-self: flex-end;
+    padding-right: 10px;
+    padding-bottom: 10px;
+
+}
+
+.update>img {
+    filter: invert();
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.update>img:hover {
+    box-shadow: 0px 0px 5px var(--darkest);
 }
