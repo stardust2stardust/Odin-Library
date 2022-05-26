@@ -101,9 +101,10 @@ function createNewCard(newBook) {
     assignNumsToCards();
 }
 
-function removeBook(e) {
-    console.log('This will remove book from the library');
-    console.log(e.node)
+function removeBookFromUI(el) {
+    if (el.classList.contains('del-book-btn')) {
+        el.parentElement.parentElement.remove();
+    }
 }
 
 
@@ -114,16 +115,12 @@ myLibrary.push(book02)
 
 addBookBtn.addEventListener('click', showForm)
 
-function assignNumsToCards() {
-    const cards = document.querySelectorAll('.card');
-    let i = 0;
-    cards.forEach(card => {
-        let cardIndex = i;
-        i++;
-        console.log(`card #: ${cardIndex}`)
-
-    })
-}
+// Event: Remove Book
+document.querySelector('main').addEventListener('click', (e) => {
+    console.log(e.target);
+    removeBookFromUI(e.target);
+    // removeBookFromList()
+})
 
 
 
