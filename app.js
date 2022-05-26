@@ -11,7 +11,6 @@ function Book(title, author, pages, hasRead, rating) {
     this.pages = pages
     this.hasRead = hasRead
     this.rating = rating
-
 }
 
 
@@ -19,8 +18,8 @@ function showForm() {
     const form = document.querySelector('form')
     const submit = document.querySelector('.submit-btn')
 
-    addBookBtn.classList.add('show-hide')
-    form.classList.remove('show-hide')
+    addBookBtn.classList.add('hide')
+    form.classList.remove('hide')
     submit.addEventListener('click', submitForm);
 
     const ratingInput = document.querySelector('#rating')
@@ -31,9 +30,8 @@ function showForm() {
     });
     const cancel = document.querySelector('.cancel-btn')
     cancel.addEventListener('click', () => {
-        console
-        form.classList.add('show-hide')
-        addBookBtn.classList.remove('show-hide')
+        form.classList.add('hide')
+        addBookBtn.classList.remove('hide')
     })
 }
 
@@ -51,11 +49,10 @@ function submitForm(e) {
     if (title.length < 1 || author.length < 1 || pages.length < 1) {
         alert("Please make sure all fields are filled out")
     } else {
-
         addBookToLibrary(title, author, pages);
         const form = document.querySelector('form')
-        addBookBtn.classList.remove('show-hide');
-        form.classList.add('show-hide');
+        addBookBtn.classList.remove('hide');
+        form.classList.add('hide');
     }
 }
 
@@ -84,8 +81,6 @@ function createNewCard(newBook) {
         userRating = `n/a`;
     }
 
-
-
     card.innerHTML = `
     <div class="book-title">
         <h2>${newBook.title}</h2>
@@ -96,46 +91,14 @@ function createNewCard(newBook) {
         <p class="info-p">${readOrNot}</p>
         <p class="info-p">${userRating}</p>
     </div>
-    <div class="update">
-        <img src="/images/check-bold.png" alt="update as read" class="update-read">
+    <div class="book-remove">
         <img src="/images/close-thick.png" alt="remove from library" class="del-book-btn">
     </div>
     `
+
     main.appendChild(card).classList.add('card')
 
-    const imgRead = document.querySelector('.update-read')
-    if (newBook.hasRead === 'true') {
-        imgRead.classList.add('show-hide');
-    } else {
-        imgRead.classList.add('update>img');
-    };
-    // update.appendChild(imgRemove).classList.add('update>img');
     assignNumsToCards();
-    // let h2 = document.createElement('h2');
-    // let bookInfo = document.createElement('div')
-    // let pAuthor = document.createElement('p');
-    // let pPages = document.createElement('p');
-    // let pRead = document.createElement('p');
-    // let pRating = document.createElement('p');
-    // let update = document.createElement('div')
-    // let imgRead = document.createElement('img');
-    // let imgRemove = document.createElement('img');
-
-    // h2.innerText = newBook.title;
-    // pAuthor.innerText = newBook.author;
-    // pPages.innerText = `${newBook.pages} pages`;
-
-
-
-    // main.appendChild(card).classList.add('card');
-    // card.appendChild(h2).classList.add('book-title');
-    // card.appendChild(bookInfo).classList.add('book-info')
-    // card.appendChild(update).classList.add('update')
-    // bookInfo.appendChild(pAuthor).classList.add('info-p');
-    // bookInfo.appendChild(pPages).classList.add('info-p');
-    // bookInfo.appendChild(pRead).classList.add('info-p');
-    // bookInfo.appendChild(pRating).classList.add('info-p');
-
 }
 
 function removeBook(e) {
