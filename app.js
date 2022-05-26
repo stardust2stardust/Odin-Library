@@ -1,4 +1,4 @@
-let myLibrary = [];
+myLibrary = [];
 
 
 const addBookBtn = document.querySelector('.add-book-btn')
@@ -71,47 +71,71 @@ function addBookToLibrary(title, author, pages) {
 
 
 function createNewCard(newBook) {
-    let card = document.createElement('div');
-    let h2 = document.createElement('h2');
-    let bookInfo = document.createElement('div')
-    let pAuthor = document.createElement('p');
-    let pPages = document.createElement('p');
-    let pRead = document.createElement('p');
-    let pRating = document.createElement('p');
-    let update = document.createElement('div')
-    let imgRead = document.createElement('img');
-    let imgRemove = document.createElement('img');
+    const main = document.querySelector('main')
+    const card = document.createElement('div');
 
-    h2.innerText = newBook.title;
-    pAuthor.innerText = newBook.author;
-    pPages.innerText = `${newBook.pages} pages`;
+    let readOrNot;
+    let userRating;
     if (newBook.hasRead === 'true') {
-        pRead.innerText = 'Read it';
-        pRating.innerText = `${newBook.rating}/10`;
+        readOrNot = 'Read it';
+        userRating = `${newBook.rating}/10`;
     } else {
-        pRead.innerText = 'Not read yet';
-        pRating.innerText = `n/a`;
+        readOrNot = 'Not read yet';
+        userRating = `n/a`;
     }
 
-    imgRead.src = "/images/check-bold.png"
-    imgRemove.src = "/images/close-thick.png"
-    const main = document.querySelector('main')
 
-    main.appendChild(card).classList.add('card');
-    card.appendChild(h2).classList.add('book-title');
-    card.appendChild(bookInfo).classList.add('book-info')
-    card.appendChild(update).classList.add('update')
-    bookInfo.appendChild(pAuthor).classList.add('info-p');
-    bookInfo.appendChild(pPages).classList.add('info-p');
-    bookInfo.appendChild(pRead).classList.add('info-p');
-    bookInfo.appendChild(pRating).classList.add('info-p');
+
+    card.innerHTML = `
+    <div class="book-title">
+        <h2>${newBook.title}</h2>
+    </div>
+    <div class="book-info">
+        <p class="info-p">${newBook.author}</p>
+        <p class="info-p">${newBook.pages} pages</p>
+        <p class="info-p">${readOrNot}</p>
+        <p class="info-p">${userRating}</p>
+    </div>
+    <div class="update">
+        <img src="/images/check-bold.png" alt="update as read" class="update-read">
+        <img src="/images/close-thick.png" alt="remove from library" class="del-book-btn">
+    </div>
+    `
+    main.appendChild(card).classList.add('card')
+
+    const imgRead = document.querySelector('.update-read')
     if (newBook.hasRead === 'true') {
-        update.appendChild(imgRead).classList.add('show-hide');
+        imgRead.classList.add('show-hide');
     } else {
-        update.appendChild(imgRead).classList.add('update>img');
+        imgRead.classList.add('update>img');
     };
-    update.appendChild(imgRemove).classList.add('update>img');
+    // update.appendChild(imgRemove).classList.add('update>img');
     assignNumsToCards();
+    // let h2 = document.createElement('h2');
+    // let bookInfo = document.createElement('div')
+    // let pAuthor = document.createElement('p');
+    // let pPages = document.createElement('p');
+    // let pRead = document.createElement('p');
+    // let pRating = document.createElement('p');
+    // let update = document.createElement('div')
+    // let imgRead = document.createElement('img');
+    // let imgRemove = document.createElement('img');
+
+    // h2.innerText = newBook.title;
+    // pAuthor.innerText = newBook.author;
+    // pPages.innerText = `${newBook.pages} pages`;
+
+
+
+    // main.appendChild(card).classList.add('card');
+    // card.appendChild(h2).classList.add('book-title');
+    // card.appendChild(bookInfo).classList.add('book-info')
+    // card.appendChild(update).classList.add('update')
+    // bookInfo.appendChild(pAuthor).classList.add('info-p');
+    // bookInfo.appendChild(pPages).classList.add('info-p');
+    // bookInfo.appendChild(pRead).classList.add('info-p');
+    // bookInfo.appendChild(pRating).classList.add('info-p');
+
 }
 
 function removeBook(e) {

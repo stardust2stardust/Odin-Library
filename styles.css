@@ -1,14 +1,10 @@
 :root {
-    --primary-dark: #333d29;
-    --primary-medium: #656d4a;
-    --primary-light: #a4ac86;
+    --primary-dark: #44403c;
+    --primary-medium: #78716c;
+    --primary-light: #d6d3d1;
 
-    --secondary-dark: #582f0e;
-    --secondary-medium: #7f4f24;
-    --secondary-light: #a68a64;
-
-    --darkest: #0c1202;
-    --lightest: #f4f5f0;
+    --darkest: #1c1917;
+    --lightest: #fafaf9;
 }
 
 *,
@@ -39,16 +35,30 @@ svg {
 
 
 body {
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Libre Baskerville', serif;
+    margin: 0;
+    background-color: var(--darkest);
+
+}
+
+.container {
     display: flex;
     flex-direction: column;
-    font-family: 'Libre Baskerville', serif;
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px var(--primary-light);
+    height: 80vh;
 }
 
 header {
     padding: 20px;
     background-color: var(--darkest);
-    color: var(--lightest);
+    color: var(--primary-light);
+    opacity: 0.9;
+    border-radius: 5px;
 
 }
 
@@ -173,15 +183,16 @@ button {
 main {
     padding: 40px;
     gap: 20px;
-
-    background-image: url("images/jez-timms-8muUTAmcWU4-unsplash.jpg");
-    background-size: contain;
-
-
-    height: 100%;
+    background-color: var(--primary-medium);
+    opacity: 0.9;
+    height: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    height: 100%;
 
+    background-image: url("images/jez-timms-8muUTAmcWU4-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .card {
