@@ -1,7 +1,7 @@
 :root {
-    --primary-dark: #44403c;
-    --primary-medium: #78716c;
-    --primary-light: #d6d3d1;
+    --primary-dark: rgb(50, 50, 50);
+    --primary-medium: #787878;
+    --primary-light: rgb(235, 235, 235);
 
     --darkest: #1c1917;
     --lightest: #fafaf9;
@@ -41,7 +41,7 @@ body {
     align-items: center;
     font-family: 'Libre Baskerville', serif;
     margin: 0;
-    background-color: black;
+    background-color: var(--primary-light);
 
 
 }
@@ -52,17 +52,18 @@ body {
     border-radius: 5px;
     box-shadow: 0px 2px 10px var(--primary-light);
     height: 85vh;
-    width: 70%;
+    width: 60%;
+    border: 2px solid var(--primary-medium)
 }
 
 header {
     padding: 20px;
-    background-color: var(--darkest);
-    color: var(--primary-light);
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
     opacity: 0.9;
     border-radius: 5px;
-    background: url('images/rey-seven-_nm_mZ4Cs2I-unsplash.jpg');
-    background-size: cover;
+
+
 
 
 }
@@ -188,13 +189,10 @@ button {
 main {
     padding: 40px;
     gap: 20px;
-    background-color: var(--primary-medium);
+    background-color: var(--primary-light);
     height: 100%;
     display: flex;
     flex-direction: column;
-
-
-
 }
 
 .card {
@@ -211,20 +209,12 @@ main {
 
 }
 
-/* 
-.card:hover {
-    background-color: var(--primary-medium);
-    box-sizing: unset;
-    border: 3px solid var(--primary-dark)
-} */
-
 .book-info {
 
     display: flex;
     align-items: flex-start;
     justify-content: center;
     gap: 5px;
-
 }
 
 .info-p {
@@ -265,4 +255,15 @@ main {
 
 .book-remove img:hover {
     box-shadow: 0px 0px 5px var(--darkest);
+}
+
+
+.edit {
+    color: var(--primary-light);
+    font-size: 0.7rem;
+    text-decoration: underline;
+}
+
+.edit:hover {
+    font-size: 0.8rem;
 }

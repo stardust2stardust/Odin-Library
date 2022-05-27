@@ -2,6 +2,13 @@ myLibrary = [];
 
 const addBookBtn = document.querySelector('.add-book-btn')
 const delBookBtn = document.querySelectorAll('.del-book-btn')
+const form = document.querySelector('form')
+const submit = document.querySelector('.submit-btn')
+const titleInput = document.querySelector('#title');
+const authorInput = document.querySelector('#author');
+const pagesInput = document.querySelector('#pages');
+const main = document.querySelector('main')
+
 
 // Constructor //
 function Book(title, author, pages, hasRead, rating) {
@@ -11,14 +18,10 @@ function Book(title, author, pages, hasRead, rating) {
     this.hasRead = hasRead
     this.rating = rating
     this.bookID = 'id' + (new Date()).getTime();
-
 }
 
 
 function showForm() {
-    const form = document.querySelector('form')
-    const submit = document.querySelector('.submit-btn')
-
     addBookBtn.classList.add('hide')
     form.classList.remove('hide')
     submit.addEventListener('click', submitForm);
@@ -39,9 +42,7 @@ function showForm() {
 
 function submitForm(e) {
     e.preventDefault();
-    const titleInput = document.querySelector('#title');
-    const authorInput = document.querySelector('#author');
-    const pagesInput = document.querySelector('#pages');
+
     let title = titleInput.value;
     let author = authorInput.value;
     let pages = pagesInput.value;
@@ -65,6 +66,7 @@ function addBookToLibrary(title, author, pages) {
     const newBook = new Book(title, author, pages, hasRead, rating);
     myLibrary.push(newBook);
     createNewCard(newBook);
+    clearForm();
 }
 
 
@@ -80,7 +82,7 @@ function createNewCard(newBook) {
         userRating = `${newBook.rating}/10`;
     } else {
         readOrNot = 'Not read yet';
-        userRating = `n/a`;
+        userRating = ``;
     }
 
     card.innerHTML = `
@@ -90,15 +92,29 @@ function createNewCard(newBook) {
     <div class="book-info">
         <p class="info-p">${newBook.author}</p>
         <p class="info-p">${newBook.pages} pages</p>
-        <p class="info-p">${readOrNot}</p>
+        <p class="info-p read-or-not">${readOrNot}</p>
         <p class="info-p">${userRating}</p>
     </div>
+    <div>
+        <p class="edit">update</p>
+    </div>
     <div class="book-remove">
+       
         <img src="/images/close-thick.png" id="${bookID}" alt="remove from library" class="del-book-btn">
     </div>
     `
+    main.appendChild(card).classList.add('card');
 
-    main.appendChild(card).classList.add('card')
+}
+
+
+
+function clearForm() {
+    titleInput.value = '';
+    authorInput.value = '';
+    pagesInput.value = '';
+    hasRead.value = '';
+    rating.value = 1;
 }
 
 function removeBookFromUI(el) {
@@ -107,6 +123,8 @@ function removeBookFromUI(el) {
         bookToRemove.remove();
     }
 }
+
+
 
 function removeBookFromLibrary(idInLibrary) {
     myLibrary.forEach(book => {
@@ -117,17 +135,20 @@ function removeBookFromLibrary(idInLibrary) {
     });
 }
 
+function checkClickedElement(e) {
+    if (e.target.classList.contains('del-book-btn')) {
+        const idInLibrary = e.target.id
+        removeBookFromUI(e.target);
+        removeBookFromLibrary(idInLibrary);
+    }
+    if (e.target.classList.contains('edit')) {
+        console.log('need to changes status');
+    }
+}
+
 addBookBtn.addEventListener('click', showForm)
 
-// Event: Remove Book
-document.querySelector('main').addEventListener('click', (e) => {
-    const idInLibrary = e.target.id
-    removeBookFromUI(e.target);
-    removeBookFromLibrary(idInLibrary);
-})
-
-const allCards = document.querySelectorAll('.card')
-const cardsIndex = [...allCards].map(card => [...allCards].indexOf(card));
+main.addEventListener('click', checkClickedElement)
 
 // const book01 = new Book("Wizard's First Rule", "Terry Goodkind", 836, true, 10);
 // const book02 = new Book("Stone of Tears", "Terry Goodkind", 979, true, 8.5)
