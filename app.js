@@ -1,6 +1,5 @@
 myLibrary = [];
 
-
 const addBookBtn = document.querySelector('.add-book-btn')
 const delBookBtn = document.querySelectorAll('.del-book-btn')
 
@@ -11,6 +10,8 @@ function Book(title, author, pages, hasRead, rating) {
     this.pages = pages
     this.hasRead = hasRead
     this.rating = rating
+    this.bookID = 'id' + (new Date()).getTime();
+
 }
 
 
@@ -70,6 +71,7 @@ function addBookToLibrary(title, author, pages) {
 function createNewCard(newBook) {
     const main = document.querySelector('main')
     const card = document.createElement('div');
+    const bookID = newBook.bookID
 
     let readOrNot;
     let userRating;
@@ -92,37 +94,52 @@ function createNewCard(newBook) {
         <p class="info-p">${userRating}</p>
     </div>
     <div class="book-remove">
-        <img src="/images/close-thick.png" alt="remove from library" class="del-book-btn">
+        <img src="/images/close-thick.png" id="${bookID}" alt="remove from library" class="del-book-btn">
     </div>
     `
 
     main.appendChild(card).classList.add('card')
-
-    assignNumsToCards();
 }
 
 function removeBookFromUI(el) {
     if (el.classList.contains('del-book-btn')) {
-        el.parentElement.parentElement.remove();
+        const bookToRemove = el.parentElement.parentElement
+        bookToRemove.remove();
     }
 }
 
-
-const book01 = new Book("Wizard's First Rule", "Terry Goodkind", 836, true, 10);
-const book02 = new Book("Stone of Tears", "Terry Goodkind", 979, true, 8.5)
-myLibrary.push(book01)
-myLibrary.push(book02)
+function removeBookFromLibrary(idInLibrary) {
+    myLibrary.forEach(book => {
+        if (idInLibrary === book.bookID) {
+            const bookIndex = myLibrary.indexOf(book)
+            myLibrary.splice(bookIndex, 1)
+        }
+    });
+}
 
 addBookBtn.addEventListener('click', showForm)
 
 // Event: Remove Book
 document.querySelector('main').addEventListener('click', (e) => {
-    console.log(e.target);
+    const idInLibrary = e.target.id
     removeBookFromUI(e.target);
-    // removeBookFromList()
+    removeBookFromLibrary(idInLibrary);
 })
 
+const allCards = document.querySelectorAll('.card')
+const cardsIndex = [...allCards].map(card => [...allCards].indexOf(card));
 
-
+// const book01 = new Book("Wizard's First Rule", "Terry Goodkind", 836, true, 10);
+// const book02 = new Book("Stone of Tears", "Terry Goodkind", 979, true, 8.5)
+// const book03 = new Book("The Name of the Wind", "Patrick Rothfuss", 662, true, 9.0);
+// const book04 = new Book("the Wise Man's Fear", "Patrick Rothfuss", 994, false, 0);
+// myLibrary.push(book01)
+// myLibrary.push(book02)
+// myLibrary.push(book03)
+// myLibrary.push(book04)
+// createNewCard(book01)
+// createNewCard(book02)
+// createNewCard(book03)
+// createNewCard(book04)
 
 
