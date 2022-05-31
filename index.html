@@ -60,14 +60,19 @@
                 </div>
 
             </form>
-            <form action="page_submission_URL" method="post" class="hide popup2">
-                <p>Congrats on comleting another book!</p>
-                <div class="rating">
-                    <label for="rating">Rating: </label>
-                    <input type="range" name="rating" id="rating2" min="1" max="10" step=".5" value="1">
-                    <output class="rating-output" for="rating"></output>
+            <div class="update-rating hide popup2">
+                <div>
+                    <label for="updateRating">Rating: </label>
+                    <input type="range" name="updateRating" id="rating2" min="1" max="10" step=".5" value="1">
+                    <output class="rating-output2" for="updateRating"></output>
                 </div>
-            </form>
+                <div>
+                    <button type="button" class="update-rating-ok">Ok</button>
+                    <button type="button" class="cancel-update">Cancel</button>
+                </div>
+
+            </div>
+
         </div>
         <main>
 

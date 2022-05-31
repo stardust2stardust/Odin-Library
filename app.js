@@ -8,7 +8,8 @@ const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
 const pagesInput = document.querySelector('#pages');
 const main = document.querySelector('main')
-const updateForm = document.querySelector('.popup2')
+
+
 
 // Constructor //
 function Book(title, author, pages, hasRead, rating) {
@@ -64,7 +65,6 @@ function submitForm(e) {
 
 function addBookToLibrary(title, author, pages) {
     const hasRead = document.querySelector('input[name="read"]:checked').value;
-    console.log('has read? ', hasRead)
     const rating = document.querySelector('#rating').value;
 
     const newBook = new Book(title, author, pages, hasRead, rating);
@@ -147,10 +147,33 @@ function checkClickedElement(e) {
         removeBookFromLibrary(idInLibrary);
     }
     if (e.target.classList.contains('edit')) {
-        console.log('need to changes status');
-        updateForm.classList.remove('hide')
+        e.target.parentElement.parentElement.childNodes[3].childNodes[5].innerText = 'Read';
+
+        e.target.classList.add('hide');
+        main.classList.add('faded');
+        addBookBtn.classList.add('faded');
+
+        const updateRatingBox = document.querySelector('.popup2');
+        updateRatingBox.classList.remove('hide');
+
+        const ratingInput2 = document.querySelector('#rating2');
+        const ratingOutput2 = document.querySelector('.rating-output2');
+        ratingOutput2.innerText = ratingInput2.value;
+        ratingInput2.addEventListener('input', () => {
+            ratingOutput2.innerText = ratingInput2.value;
+        });
+
+        const updateOkBtn = document.querySelector('.update-rating-ok');
+        const ratingDiv = e.target;
+        updateOkBtn.addEventListener('click', (e) => {
+            ratingDiv.parentElement.parentElement.childNodes[3].childNodes[7].innerText = `${ratingInput2.value}/10`;
+            updateRatingBox.classList.add('hide');
+            main.classList.remove('faded');
+            addBookBtn.classList.remove('faded');
+        });
     }
 }
+
 
 addBookBtn.addEventListener('click', showForm)
 main.addEventListener('click', checkClickedElement)

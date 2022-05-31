@@ -73,7 +73,7 @@ header {
     cursor: pointer;
 }
 
-.add-book-btn button {
+button {
     cursor: pointer;
 }
 
@@ -102,9 +102,23 @@ header {
     z-index: 3;
 }
 
-/* form {
-    width: 100%;
-} */
+.popup2 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    padding: 20px 10px;
+    background: #fff;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
 
 .hide {
     display: none;
@@ -199,7 +213,9 @@ button {
 }
 
 .submit-btn,
-.cancel-btn {
+.cancel-btn,
+.update-rating-ok,
+.cancel-update {
     background-color: var(--primary-dark);
     padding: 5px 10px;
     font-size: 1rem;
