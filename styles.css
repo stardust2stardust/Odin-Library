@@ -110,6 +110,10 @@ header {
     display: none;
 }
 
+.faded {
+    opacity: 0.5;
+}
+
 .inputs {
     display: flex;
     flex-direction: column;

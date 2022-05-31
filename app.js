@@ -22,7 +22,8 @@ function Book(title, author, pages, hasRead, rating) {
 
 
 function showForm() {
-    addBookBtn.classList.add('hide')
+    addBookBtn.classList.add('faded')
+    main.classList.add('faded')
     form.classList.remove('hide')
     submit.addEventListener('click', submitForm);
 
@@ -53,7 +54,8 @@ function submitForm(e) {
     } else {
         addBookToLibrary(title, author, pages);
         const form = document.querySelector('form')
-        addBookBtn.classList.remove('hide');
+        addBookBtn.classList.remove('faded');
+        main.classList.remove('faded');
         form.classList.add('hide');
     }
 }
