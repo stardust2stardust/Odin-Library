@@ -36,7 +36,8 @@ function showForm() {
     const cancel = document.querySelector('.cancel-btn')
     cancel.addEventListener('click', () => {
         form.classList.add('hide')
-        addBookBtn.classList.remove('hide')
+        addBookBtn.classList.remove('faded');
+        main.classList.remove('faded')
     })
 }
 
@@ -62,7 +63,7 @@ function submitForm(e) {
 
 
 function addBookToLibrary(title, author, pages) {
-    let hasRead = document.querySelector('input[name=read]:checked').value;
+    let hasRead = document.querySelector('input[name="read"]:checked').value;
     let rating = document.querySelector('#rating').value;
 
     const newBook = new Book(title, author, pages, hasRead, rating);
