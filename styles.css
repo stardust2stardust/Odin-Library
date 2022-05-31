@@ -1,9 +1,9 @@
 :root {
-    --primary-dark: rgb(50, 50, 50);
-    --primary-medium: rgb(100, 100, 100);
-    --primary-light: rgb(200, 200, 200);
+    --primary-medium: rgb(32, 99, 126);
+    --primary-light: rgb(92, 154, 179);
+    --primary-dark: rgb(19, 60, 77);
 
-    --darkest: #1c1917;
+    --darkest: rgb(0, 0, 0);
     --lightest: #fafaf9;
 }
 
@@ -41,7 +41,7 @@ body {
     align-items: center;
     font-family: 'Libre Baskerville', serif;
     margin: 0;
-    /* background: linear-gradient(135deg, var(--primary-light), var(--lightest)); */
+    background: whitesmoke;
 }
 
 .container {
@@ -57,8 +57,8 @@ body {
 
 header {
     padding: 20px;
-    background: linear-gradient(to right, var(--primary-medium), var(--primary-light), var(--primary-medium));
-    color: var(--primary-dark);
+    background: var(--primary-dark);
+    color: var(--lightest);
     opacity: 0.9;
     border-radius: 5px 5px 0 0
 }
@@ -244,7 +244,7 @@ main {
 .card {
 
     height: fit-content;
-    background-color: var(--darkest);
+    background-color: var(--primary-dark);
     opacity: 0.9;
     display: flex;
     justify-content: space-between;
@@ -256,46 +256,43 @@ main {
 }
 
 .book-info {
-
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
 }
 
 .info-p {
     font-size: 0.9rem;
     color: var(--lightest);
     text-align: left;
-    padding-left: 10px;
 }
 
 .book-title {
-
     margin: 0px;
     padding: 10px;
-    color: var(--darkest);
-    background-color: var(--primary-light);
+    color: var(--lightest);
+    background-color: var(--primary-dark);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 30%;
     opacity: 0.9rem;
     border-radius: 10px 0 0 10px;
+    border-right: 2px solid var(--lightest)
 }
 
 .book-remove {
     display: flex;
     gap: 5px;
-    align-self: flex-end;
-    padding-right: 10px;
-    padding-bottom: 10px;
 
+    padding-right: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .book-remove img {
     filter: invert();
-    padding: 3px;
     border-radius: 5px;
 }
 
@@ -305,7 +302,7 @@ main {
 
 
 .edit {
-    color: var(--primary-light);
+    color: var(--lightest);
     font-size: 0.7rem;
     text-decoration: underline;
 }

@@ -83,7 +83,7 @@ function createNewCard(newBook) {
     let userRating;
     if (newBook.hasRead === 'true') {
         readOrNot = 'Read it';
-        userRating = `${newBook.rating}/10`;
+        userRating = `*  ${newBook.rating}/10  *`;
     } else {
         readOrNot = 'Not read yet';
         userRating = ``;
