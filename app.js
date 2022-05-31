@@ -8,7 +8,7 @@ const titleInput = document.querySelector('#title');
 const authorInput = document.querySelector('#author');
 const pagesInput = document.querySelector('#pages');
 const main = document.querySelector('main')
-
+const updateForm = document.querySelector('.popup2')
 
 // Constructor //
 function Book(title, author, pages, hasRead, rating) {
@@ -63,8 +63,9 @@ function submitForm(e) {
 
 
 function addBookToLibrary(title, author, pages) {
-    let hasRead = document.querySelector('input[name="read"]:checked').value;
-    let rating = document.querySelector('#rating').value;
+    const hasRead = document.querySelector('input[name="read"]:checked').value;
+    console.log('has read? ', hasRead)
+    const rating = document.querySelector('#rating').value;
 
     const newBook = new Book(title, author, pages, hasRead, rating);
     myLibrary.push(newBook);
@@ -106,19 +107,20 @@ function createNewCard(newBook) {
         <img src="/images/close-thick.png" id="${bookID}" alt="remove from library" class="del-book-btn">
     </div>
     `
+    const update = card.querySelector('.edit')
+    if (newBook.hasRead === 'true') {
+        update.classList.add('hide')
+    }
     main.appendChild(card).classList.add('card');
-
 }
-
 
 
 function clearForm() {
     titleInput.value = '';
     authorInput.value = '';
     pagesInput.value = '';
-    hasRead.value = '';
-    rating.value = 1;
 }
+
 
 function removeBookFromUI(el) {
     if (el.classList.contains('del-book-btn')) {
@@ -126,7 +128,6 @@ function removeBookFromUI(el) {
         bookToRemove.remove();
     }
 }
-
 
 
 function removeBookFromLibrary(idInLibrary) {
@@ -138,6 +139,7 @@ function removeBookFromLibrary(idInLibrary) {
     });
 }
 
+
 function checkClickedElement(e) {
     if (e.target.classList.contains('del-book-btn')) {
         const idInLibrary = e.target.id
@@ -146,12 +148,15 @@ function checkClickedElement(e) {
     }
     if (e.target.classList.contains('edit')) {
         console.log('need to changes status');
+        updateForm.classList.remove('hide')
     }
 }
 
 addBookBtn.addEventListener('click', showForm)
-
 main.addEventListener('click', checkClickedElement)
+
+
+
 
 // const book01 = new Book("Wizard's First Rule", "Terry Goodkind", 836, true, 10);
 // const book02 = new Book("Stone of Tears", "Terry Goodkind", 979, true, 8.5)
