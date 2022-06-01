@@ -5,6 +5,12 @@
 
     --darkest: rgb(0, 0, 0);
     --lightest: #fafaf9;
+
+    --slate-50: #f8fafc;
+    --slate-200: #e2e8f0;
+    --slate-400: #94a3b8;
+    --slate-600: #475569;
+    --slate-800: #1e293b;
 }
 
 *,
@@ -18,10 +24,6 @@ h1 {
     font-size: 2rem;
 }
 
-h2 {
-    font-size: 1.1rem;
-}
-
 p,
 h1,
 h2 {
@@ -30,7 +32,7 @@ h2 {
 
 svg {
     display: block;
-    color: var(--lightest);
+    color: var(--slate-50);
 }
 
 
@@ -41,24 +43,22 @@ body {
     align-items: center;
     font-family: 'Libre Baskerville', serif;
     margin: 0;
-    background: whitesmoke;
+    background: linear-gradient(var(--slate-800), var(--slate-600))
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
-
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    border: 5px solid var(--slate-200);
     height: 85vh;
-    width: 60%;
+
 
 }
 
 header {
     padding: 20px;
-    background: var(--primary-dark);
-    color: var(--lightest);
+    color: var(--slate-50);
     opacity: 0.9;
     border-radius: 5px 5px 0 0
 }
@@ -67,7 +67,7 @@ header {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    background-color: var(--primary-dark);
+    border: 1px solid var(--slate-200);
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
@@ -83,10 +83,7 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--lightest);
     gap: 10px;
-
-
 }
 
 .popup {
@@ -96,8 +93,8 @@ button {
     transform: translate(-50%, -50%);
     width: 350px;
     padding: 20px 10px;
-    background: #fff;
     box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    background-color: var(--slate-400);
     border-radius: 10px;
     z-index: 3;
 }
@@ -109,7 +106,7 @@ button {
     transform: translate(-50%, -50%);
     width: 350px;
     padding: 20px 10px;
-    background: #fff;
+
     box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     z-index: 4;
@@ -147,7 +144,7 @@ button {
 
 
     border-radius: 5px;
-    border: 1px solid var(--primary-medium);
+    border: 1px solid var(--slate-200);
     width: 80%;
 }
 
@@ -161,6 +158,8 @@ button {
 .inputs label {
     text-transform: uppercase;
     font-size: 0.9rem;
+    color: var(--slate-800);
+
 }
 
 .radio-input>label {
@@ -169,7 +168,7 @@ button {
 
 input {
     font-size: 1rem;
-    background: var(--lightest);
+    background: var(--slate-50);
 }
 
 .rating {
@@ -179,23 +178,23 @@ input {
 
 input[type=range]::-webkit-slider-runnable-track {
     -webkit-appearance: none;
-    background: var(--neutral);
+    background: var(--slate-50);
     border-radius: 10px;
 }
 
 
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    background: var(--dark-olive);
+    background: var(--slate-600);
 }
 
 label {
-    color: var(--primary-dark);
+    color: var(--slate-800);
     font-size: 1.2rem;
 }
 
 output {
-    color: var(--dark)
+    color: var(--slate-800)
 }
 
 button {
@@ -203,7 +202,7 @@ button {
     background-color: transparent;
     font-size: 1.2rem;
     border: none;
-    color: var(--lightest);
+    color: var(--slate-200);
 
 }
 
@@ -216,7 +215,7 @@ button {
 .cancel-btn,
 .update-rating-ok,
 .cancel-update {
-    background-color: var(--primary-dark);
+    background-color: var(--slate-800);
     padding: 5px 10px;
     font-size: 1rem;
     font-weight: 700;
@@ -227,13 +226,13 @@ button {
 
 .submit-btn:hover,
 .cancel-btn:hover {
-    background-color: var(--primary-medium);
+    background-color: var(--slate-600);
 }
 
 main {
     padding: 40px;
     gap: 20px;
-    background-color: var(--lightest);
+
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -244,42 +243,40 @@ main {
 .card {
 
     height: fit-content;
-    background-color: var(--primary-dark);
     opacity: 0.9;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid var(--primary-dark);
+    border: 1px solid var(--slate-200);
     border-radius: 10px;
-    box-shadow: 0px 0px 5px var(--primary-light);
-
 }
 
 .book-info {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
     gap: 10px;
 }
 
 .info-p {
-    font-size: 0.9rem;
-    color: var(--lightest);
+    font-size: 1rem;
+    color: var(--slate-50);
     text-align: left;
 }
 
 .book-title {
     margin: 0px;
     padding: 10px;
-    color: var(--lightest);
-    background-color: var(--primary-dark);
+    color: var(--slate-800);
+    background-color: var(--slate-400);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
-    opacity: 0.9rem;
+    width: auto;
+
     border-radius: 10px 0 0 10px;
-    border-right: 2px solid var(--lightest)
+    border-right: 2px solid var(--slate-800);
+    font-size: 1.0rem;
 }
 
 .book-remove {
@@ -297,14 +294,15 @@ main {
 }
 
 .book-remove img:hover {
-    box-shadow: 0px 0px 5px var(--darkest);
+    box-shadow: 0px 0px 5px var(--slate-800);
 }
 
 
 .edit {
-    color: var(--lightest);
+    color: var(--slate-200);
     font-size: 0.7rem;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .edit:hover {
