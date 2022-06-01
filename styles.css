@@ -52,7 +52,7 @@ body {
     border-radius: 10px;
     border: 5px solid var(--slate-200);
     height: 85vh;
-
+    min-width: 50%;
 
 }
 
@@ -106,8 +106,8 @@ button {
     transform: translate(-50%, -50%);
     width: 350px;
     padding: 20px 10px;
-
     box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    background-color: var(--slate-400);
     border-radius: 10px;
     z-index: 4;
     display: flex;
@@ -141,8 +141,6 @@ button {
 
 .text-inputs input {
     margin: 5px 0 25px 0;
-
-
     border-radius: 5px;
     border: 1px solid var(--slate-200);
     width: 80%;
@@ -243,7 +241,6 @@ main {
 .card {
 
     height: fit-content;
-    opacity: 0.9;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -253,15 +250,15 @@ main {
 
 .book-info {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 10px;
+
+
 }
 
 .info-p {
     font-size: 1rem;
     color: var(--slate-50);
     text-align: left;
+    padding: 5px 10px;
 }
 
 .book-title {
@@ -282,18 +279,18 @@ main {
 .book-remove {
     display: flex;
     gap: 5px;
-
+    margin-left: 10px;
     padding-right: 10px;
     align-items: center;
     justify-content: center;
 }
 
-.book-remove img {
+.update-div img {
     filter: invert();
     border-radius: 5px;
 }
 
-.book-remove img:hover {
+.update-div img:hover {
     box-shadow: 0px 0px 5px var(--slate-800);
 }
 
@@ -303,8 +300,21 @@ main {
     font-size: 0.7rem;
     text-decoration: underline;
     cursor: pointer;
+
+
 }
 
 .edit:hover {
     font-size: 0.8rem;
+}
+
+.update-div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.read {
+    color: green;
 }

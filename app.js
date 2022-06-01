@@ -23,9 +23,11 @@ function Book(title, author, pages, hasRead, rating) {
 
 
 function showForm() {
-    addBookBtn.classList.add('faded')
-    main.classList.add('faded')
-    form.classList.remove('hide')
+    addBookBtn.classList.add('hide')
+
+    main.classList.add('faded');
+    main.removeEventListener('click', checkClickedElement);
+    form.classList.remove('hide');
     submit.addEventListener('click', submitForm);
 
     const ratingInput = document.querySelector('#rating')
@@ -37,8 +39,8 @@ function showForm() {
     const cancel = document.querySelector('.cancel-btn')
     cancel.addEventListener('click', () => {
         form.classList.add('hide')
-        addBookBtn.classList.remove('faded');
-        main.classList.remove('faded')
+        addBookBtn.classList.remove('hide');
+        main.classList.remove('faded');
     })
 }
 
@@ -46,19 +48,38 @@ function showForm() {
 function submitForm(e) {
     e.preventDefault();
 
-    let title = titleInput.value;
-    let author = authorInput.value;
-    let pages = pagesInput.value;
+    const title = titleInput.value;
+    const author = authorInput.value;
+    const pages = pagesInput.value;
+
 
     // check that text inputs were filled out
     if (title.length < 1 || author.length < 1 || pages.length < 1) {
-        alert("Please make sure all fields are filled out")
-    } else {
+        if (title.length < 1) {
+            titleInput.style.border = "1px solid red";
+        } else {
+            titleInput.style.border = "1px solid green";
+        }
+
+        if (author.length < 1) {
+            authorInput.style.border = "1px solid red";
+        } else {
+            authorInput.style.border = "1px solid green";
+        }
+
+        if (pages.length < 1) {
+            pagesInput.style.border = "1px solid red";
+        } else {
+            pagesInput.style.border = "1px solid green";
+        }
+    }
+    else {
         addBookToLibrary(title, author, pages);
         const form = document.querySelector('form')
-        addBookBtn.classList.remove('faded');
+        addBookBtn.classList.remove('hide');
         main.classList.remove('faded');
         form.classList.add('hide');
+        main.addEventListener('click', checkClickedElement);
     }
 }
 
@@ -77,41 +98,75 @@ function addBookToLibrary(title, author, pages) {
 function createNewCard(newBook) {
     const main = document.querySelector('main')
     const card = document.createElement('div');
+    card.classList.add('card');
     const bookID = newBook.bookID
 
     let readOrNot;
     let userRating;
     if (newBook.hasRead === 'true') {
         readOrNot = 'Read it';
-        userRating = `*  ${newBook.rating}/10  *`;
+        userRating = `${newBook.rating}/10`;
     } else {
         readOrNot = 'Not read yet';
         userRating = ``;
     }
+    // append title to card
+    const titleDiv = document.createElement('div');
+    const h2 = document.createElement('h2')
+    h2.classList.add('book-title');
+    h2.innerText = newBook.title;
+    main.append(card)
+    card.append(titleDiv)
+    titleDiv.append(h2);
 
-    card.innerHTML = `
-    <div class="book-title">
-        <h2>${newBook.title}</h2>
-    </div>
-    <div class="book-info">
-        <p class="info-p">${newBook.author}</p>
-        <p class="info-p">${newBook.pages} pages</p>
-        <p class="info-p read-or-not">${readOrNot}</p>
-        <p class="info-p">${userRating}</p>
-    </div>
-    <div>
-        <p class="edit">update</p>
-    </div>
-    <div class="book-remove">
-       
-        <img src="/images/close-thick.png" id="${bookID}" alt="remove from library" class="del-book-btn">
-    </div>
-    `
+    // append book info to card
+    const bookInfoDiv = document.createElement('div');
+    bookInfoDiv.classList.add('book-info')
+    const pAuthor = document.createElement('p')
+    pAuthor.classList.add('info-p');
+    const pPages = document.createElement('p')
+    pPages.classList.add('info-p');
+    const pReadStatus = document.createElement('p')
+    pReadStatus.classList.add('info-p', 'read-or-not');
+    const pRating = document.createElement('p')
+    pRating.classList.add('info-p');
+
+    pAuthor.innerText = newBook.author;
+    pPages.innerText = newBook.pages;
+    pReadStatus.innerText = readOrNot;
+    pRating.innerText = userRating;
+
+    card.append(bookInfoDiv)
+    bookInfoDiv.append(pAuthor)
+    bookInfoDiv.append(pPages)
+    bookInfoDiv.append(pReadStatus)
+    bookInfoDiv.append(pRating);
+
+
+    // append update item and remove icon 
+    const updateDiv = document.createElement('div');
+    updateDiv.classList.add('update-div');
+    const pUpdate = document.createElement('p')
+    pUpdate.classList.add('edit');
+    // const removeIconDiv = document.createElement('div')
+    // removeIconDiv.classList.add('book-remove');
+    const removeIcon = document.createElement('img')
+    removeIcon.setAttribute('id', bookID)
+    removeIcon.classList.add('del-book-btn')
+
+    pUpdate.innerText = "update"
+    removeIcon.src = "/images/close-thick.png"
+
+    card.append(updateDiv)
+    updateDiv.append(pUpdate)
+    // card.append(removeIconDiv)
+    // removeIconDiv.append(removeIcon);
+    updateDiv.append(removeIcon)
+
     const update = card.querySelector('.edit')
     if (newBook.hasRead === 'true') {
         update.classList.add('hide')
     }
-    main.appendChild(card).classList.add('card');
 }
 
 
@@ -147,11 +202,12 @@ function checkClickedElement(e) {
         removeBookFromLibrary(idInLibrary);
     }
     if (e.target.classList.contains('edit')) {
-        e.target.parentElement.parentElement.childNodes[3].childNodes[5].innerText = 'Read';
+
+        // e.target.parentElement.parentElement.childNodes[1].childNodes[2].innerText = 'Read';
 
         e.target.classList.add('hide');
         main.classList.add('faded');
-        addBookBtn.classList.add('faded');
+        addBookBtn.classList.add('hide');
 
         const updateRatingBox = document.querySelector('.popup2');
         updateRatingBox.classList.remove('hide');
@@ -166,10 +222,20 @@ function checkClickedElement(e) {
         const updateOkBtn = document.querySelector('.update-rating-ok');
         const ratingDiv = e.target;
         updateOkBtn.addEventListener('click', (e) => {
-            ratingDiv.parentElement.parentElement.childNodes[3].childNodes[7].innerText = `${ratingInput2.value}/10`;
+            ratingDiv.parentElement.parentElement.childNodes[1].childNodes[2].innerText = 'Read';
+            // ratingDiv.parentElement.parentElement.childNodes[1].childNodes[2].style.color = 'green'
+            ratingDiv.parentElement.parentElement.childNodes[1].childNodes[3].innerText = `${ratingInput2.value}/10`;
+            // ratingDiv.parentElement.parentElement.childNodes[1].childNodes[3].style.color = 'yellow'
             updateRatingBox.classList.add('hide');
             main.classList.remove('faded');
-            addBookBtn.classList.remove('faded');
+            addBookBtn.classList.remove('hide');
+        });
+
+        document.querySelector('.cancel-update').addEventListener('click', () => {
+            updateRatingBox.classList.add('hide');
+            main.classList.remove('faded');
+            addBookBtn.classList.remove('hide');
+            ratingDiv.classList.remove('hide')
         });
     }
 }
@@ -181,17 +247,17 @@ main.addEventListener('click', checkClickedElement)
 
 
 
-// const book01 = new Book("Wizard's First Rule", "Terry Goodkind", 836, true, 10);
-// const book02 = new Book("Stone of Tears", "Terry Goodkind", 979, true, 8.5)
-// const book03 = new Book("The Name of the Wind", "Patrick Rothfuss", 662, true, 9.0);
-// const book04 = new Book("the Wise Man's Fear", "Patrick Rothfuss", 994, false, 0);
-// myLibrary.push(book01)
-// myLibrary.push(book02)
-// myLibrary.push(book03)
-// myLibrary.push(book04)
-// createNewCard(book01)
-// createNewCard(book02)
-// createNewCard(book03)
-// createNewCard(book04)
+const book01 = new Book("Wizard's First Rule", "Terry Goodkind", 836, true, 10);
+const book02 = new Book("Stone of Tears", "Terry Goodkind", 979, true, 8.5)
+const book03 = new Book("The Name of the Wind", "Patrick Rothfuss", 662, true, 9.0);
+const book04 = new Book("the Wise Man's Fear", "Patrick Rothfuss", 994, false, 0);
+myLibrary.push(book01)
+myLibrary.push(book02)
+myLibrary.push(book03)
+myLibrary.push(book04)
+createNewCard(book01)
+createNewCard(book02)
+createNewCard(book03)
+createNewCard(book04)
 
 
