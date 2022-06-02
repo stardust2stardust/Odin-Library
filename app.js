@@ -100,6 +100,7 @@ function createNewCard(newBook) {
     const card = document.createElement('div');
     card.classList.add('card');
     const bookID = newBook.bookID
+    card.setAttribute('id', bookID);
 
     let readOrNot;
     let userRating;
@@ -130,6 +131,7 @@ function createNewCard(newBook) {
     pReadStatus.classList.add('info-p', 'read-or-not');
     const pRating = document.createElement('p')
     pRating.classList.add('info-p');
+    
 
     pAuthor.innerText = newBook.author;
     pPages.innerText = newBook.pages;
@@ -148,10 +150,11 @@ function createNewCard(newBook) {
     updateDiv.classList.add('update-div');
     const pUpdate = document.createElement('p')
     pUpdate.classList.add('edit');
+    pUpdate.setAttribute('data-book-id', bookID)
     // const removeIconDiv = document.createElement('div')
     // removeIconDiv.classList.add('book-remove');
     const removeIcon = document.createElement('img')
-    removeIcon.setAttribute('id', bookID)
+    removeIcon.setAttribute('data-book-id', bookID)
     removeIcon.classList.add('del-book-btn')
 
     pUpdate.innerText = "update"
@@ -159,6 +162,7 @@ function createNewCard(newBook) {
 
     card.append(updateDiv)
     updateDiv.append(pUpdate)
+    
     // card.append(removeIconDiv)
     // removeIconDiv.append(removeIcon);
     updateDiv.append(removeIcon)
@@ -196,41 +200,40 @@ function removeBookFromLibrary(idInLibrary) {
 
 
 function checkClickedElement(e) {
+    const thisClickedItem = e.target
+    const thisClickedItemId = thisClickedItem.dataset.bookId
     if (e.target.classList.contains('del-book-btn')) {
-        const idInLibrary = e.target.id
+        console.log('delete button clicked')
+        const idInLibrary = e.target.dataset.bookId
         removeBookFromUI(e.target);
         removeBookFromLibrary(idInLibrary);
     }
     if (e.target.classList.contains('edit')) {
-
-        // e.target.parentElement.parentElement.childNodes[1].childNodes[2].innerText = 'Read';
-
-        e.target.classList.add('hide');
-        main.classList.add('faded');
-        addBookBtn.classList.add('hide');
-
+        console.log('update button clicked')
         const updateRatingBox = document.querySelector('.popup2');
         updateRatingBox.classList.remove('hide');
-
-        const ratingInput2 = document.querySelector('#rating2');
+        const ratingInput2 = document.querySelector('.rating2');
         const ratingOutput2 = document.querySelector('.rating-output2');
         ratingOutput2.innerText = ratingInput2.value;
         ratingInput2.addEventListener('input', () => {
             ratingOutput2.innerText = ratingInput2.value;
         });
+        
+   
+        
+        const thisCard = e.target.parentElement.parentElement
+        console.log(thisCard)
+     
 
-        const updateOkBtn = document.querySelector('.update-rating-ok');
-        const ratingDiv = e.target;
-        updateOkBtn.addEventListener('click', (e) => {
-            ratingDiv.parentElement.parentElement.childNodes[1].childNodes[2].innerText = 'Read';
-            // ratingDiv.parentElement.parentElement.childNodes[1].childNodes[2].style.color = 'green'
-            ratingDiv.parentElement.parentElement.childNodes[1].childNodes[3].innerText = `${ratingInput2.value}/10`;
-            // ratingDiv.parentElement.parentElement.childNodes[1].childNodes[3].style.color = 'yellow'
-            updateRatingBox.classList.add('hide');
-            main.classList.remove('faded');
-            addBookBtn.classList.remove('hide');
-        });
-
+        document.querySelector('.update-rating-ok').addEventListener('click', (e) => {
+            if (thisCard.id === thisClickedItemId) {
+                thisBookUpdate.innerText = ratingInput2.value
+            console.log(ratingInput2.value)
+            thisBookUpdate.parentElement.parentElement.childNodes[1].childNodes[2].innerText = 'read this one'
+            }
+            
+         
+        })
         document.querySelector('.cancel-update').addEventListener('click', () => {
             updateRatingBox.classList.add('hide');
             main.classList.remove('faded');
@@ -260,4 +263,38 @@ createNewCard(book02)
 createNewCard(book03)
 createNewCard(book04)
 
+        // const cardID = e.target.parentElement.parentElement.id
+        // const thisCard = e.target.parentElement.parentElement
+        // console.log(e.target)
+        // console.log(cardID)
+        // console.log(thisCard)
+        // e.target.classList.add('hide');
+        // main.classList.add('faded');
+        // addBookBtn.classList.add('hide');
 
+        
+
+        // const ratingInput2 = document.querySelector('.rating2');
+        // console.log(ratingInput2)
+        // const ratingOutput2 = document.querySelector('.rating-output2');
+        // console.log(ratingOutput2)
+        // ratingOutput2.innerText = ratingInput2.value;
+        // ratingInput2.addEventListener('input', () => {
+        //     ratingOutput2.innerText = ratingInput2.value;
+        // });
+
+        // const updateOkBtn = document.querySelector('.update-rating-ok');
+        // const ratingDiv = e.target;
+        // updateOkBtn.addEventListener('click', () => {
+        //     console.log(e.target)
+        //     if (e.target.parentElement.parentElement.id === cardID) {
+        //         // ratingDiv.parentElement.parentElement.childNodes[1].childNodes[2].innerText = 'Read';
+        //         
+        //         e.target.parentElement.parentElement.childNodes[1].childNodes[3].innerText = `${ratingInput2.value}/10`;
+        //         // ratingDiv.parentElement.parentElement.childNodes[1].childNodes[3].style.color = 'yellow'
+        //         updateRatingBox.classList.add('hide');
+        //         main.classList.remove('faded');
+        //         addBookBtn.classList.remove('hide');
+        //     }
+
+        // });
