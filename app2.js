@@ -26,6 +26,11 @@ function showLibrary() {
 
 // show Form 
 function showForm() {
+    clearForm();
+    title.classList.remove('input-error', 'input-valid');
+    author.classList.remove('input-error', 'input-valid');
+    pages.classList.remove('input-error', 'input-valid');
+
     const form = document.querySelector('form');
     form.classList.remove('hide');
     newBookBtn.classList.add('hide');
@@ -40,6 +45,7 @@ function showForm() {
 // submit Form
 function submitForm(e) {
     e.preventDefault();
+
 
     // remove previous error msg if present
     const formDiv = document.querySelector('form>div')
@@ -56,27 +62,33 @@ function submitForm(e) {
         showErrorMsg();
 
         if (title.value.length < 1) {
-            title.style.border = "1px solid red";
+            title.classList.add('input-error');
         } else {
-            title.style.border = "1px solid green";
+            title.classList.add('input-valid');
         }
 
         if (author.value.length < 1) {
-            author.style.border = "1px solid red";
+            author.classList.add('input-error');
         } else {
-            author.style.border = "1px solid green";
+            author.classList.add('input-valid');
         }
 
         if (pages.value.length < 1) {
-            pages.style.border = "1px solid red";
+            pages.classList.add('input-error');
         } else {
-            pages.style.border = "1px solid green";
+            pages.classList.add('input-valid');
         }
     } else {
+        const form = document.querySelector('form');
+        form.classList.add('hide')
+        newBookBtn.classList.remove('hide');
+
         const newBook = new Book(title.value, author.value, pages.value, hasRead);
         addBookToLibrary(newBook);
         addBookToUI(newBook);
         clearForm();
+
+
     }
 }
 
@@ -103,6 +115,14 @@ function cancelForm() {
     const form = document.querySelector('form');
     form.classList.add('hide');
     newBookBtn.classList.remove('hide');
+
+    title.classList.remove('input-error', 'input-valid');
+    author.classList.remove('input-error', 'input-valid');
+    pages.classList.remove('input-error', 'input-valid');
+    const formDiv = document.querySelector('form>div')
+    if (formDiv.classList.contains('fail')) {
+        formDiv.remove();
+    }
 }
 
 // get my library from local storage
@@ -138,6 +158,8 @@ function addBookToUI(newBook) {
     td3.innerText = newBook.pages;
     const td4 = document.createElement('td');
     td4.innerText = newBook.hasRead;
+    const td4b = document.createElement('td');
+    td4b.innerText = "X / 10";
     const td5 = document.createElement('td');
     td5.innerText = newBook.bookID;
     td5.classList.add('hide');
@@ -150,6 +172,7 @@ function addBookToUI(newBook) {
     newRow.append(td2);
     newRow.append(td3);
     newRow.append(td4);
+    newRow.append(td4b)
     newRow.append(td5);
     newRow.append(td6);
 }
