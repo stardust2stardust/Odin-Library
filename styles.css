@@ -23,12 +23,11 @@ body {
 
 .container {
     min-width: 60%;
-    border: 2px solid var(--slate-100);
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
-
+    padding: 0px 5px;
 }
 
 h1 {
@@ -121,6 +120,11 @@ th {
     padding-left: 3px;
 }
 
+.legend {
+    margin-top: 15px;
+    align-self: flex-start;
+}
+
 .hide {
     display: none;
 }
@@ -131,6 +135,14 @@ th {
 
 .fail {
     color: red;
+}
+
+.input-error {
+    border: 1px solid red;
+}
+
+.input-valid {
+    border: 1px solid green;
 }
 
 .delete {
