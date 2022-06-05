@@ -56,21 +56,21 @@ function submitForm(e) {
     // check that text inputs were filled out
     if (title.length < 1 || author.length < 1 || pages.length < 1) {
         if (title.length < 1) {
-            titleInput.style.border = "1px solid red";
+            title.style.border = "1px solid red";
         } else {
-            titleInput.style.border = "1px solid green";
+            title.style.border = "1px solid green";
         }
 
         if (author.length < 1) {
-            authorInput.style.border = "1px solid red";
+            author.style.border = "1px solid red";
         } else {
-            authorInput.style.border = "1px solid green";
+            author.style.border = "1px solid green";
         }
 
         if (pages.length < 1) {
-            pagesInput.style.border = "1px solid red";
+            pages.style.border = "1px solid red";
         } else {
-            pagesInput.style.border = "1px solid green";
+            pages.style.border = "1px solid green";
         }
     }
     else {
