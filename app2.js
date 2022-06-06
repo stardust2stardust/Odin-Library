@@ -36,6 +36,11 @@ function showForm() {
     form.classList.remove('hide');
     newBookBtn.classList.add('hide');
 
+    const bookList = document.querySelector('table');
+    const legend = document.querySelector('.legend')
+    bookList.classList.add('hide')
+    legend.classList.add('hide')
+
     const addBookBtn = document.querySelector('.form-submit-btn');
     addBookBtn.addEventListener('click', submitForm);
 
@@ -47,6 +52,10 @@ function showForm() {
 function submitForm(e) {
     e.preventDefault();
 
+    const bookList = document.querySelector('table');
+    const legend = document.querySelector('.legend')
+    bookList.classList.remove('hide');
+    legend.classList.remove('hide')
 
     // remove previous error msg if present
     const formDiv = document.querySelector('form>div')
@@ -85,14 +94,14 @@ function submitForm(e) {
         form.classList.add('hide')
         newBookBtn.classList.remove('hide');
 
-        let ratingOutput;
-        if (hasRead === "--") {
-            ratingOutput = 'n/a'
-        } else {
-            ratingOutput = `${rating.value}/10`
-        }
+        // let ratingOutput;
+        // if (hasRead === "--") {
+        //     ratingOutput = 'n/a'
+        // } else {
+        //     ratingOutput = `${rating.value}/10`
+        // }
 
-        const newBook = new Book(title.value, author.value, pages.value, hasRead, ratingOutput);
+        const newBook = new Book(title.value, author.value, pages.value, hasRead);
         addBookToLibrary(newBook);
         addBookToUI(newBook);
         clearForm();
@@ -124,6 +133,11 @@ function cancelForm() {
     const form = document.querySelector('form');
     form.classList.add('hide');
     newBookBtn.classList.remove('hide');
+
+    const bookList = document.querySelector('table');
+    const legend = document.querySelector('.legend')
+    bookList.classList.remove('hide');
+    legend.classList.remove('hide')
 
     title.classList.remove('input-error', 'input-valid');
     author.classList.remove('input-error', 'input-valid');

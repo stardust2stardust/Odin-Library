@@ -36,7 +36,7 @@ h1 {
 }
 
 .btn {
-    background-color: teal;
+    background-color: rgb(82, 29, 143);
     color: whitesmoke;
     border: none;
     padding: 5px;
@@ -182,6 +182,7 @@ th {
 
 .read-status {
     text-align: center;
+    cursor: pointer;
 }
 
 .delete {
