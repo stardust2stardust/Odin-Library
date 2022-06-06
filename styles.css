@@ -15,7 +15,7 @@
 body {
     height: 100vh;
     background: linear-gradient(var(--slate-900), var(--slate-700));
-    color: var(--slate-300);
+    color: var(--slate-100);
     display: flex;
     justify-content: center;
 
@@ -32,6 +32,7 @@ body {
 
 h1 {
     padding: 20px;
+    color: var(--slate-100)
 }
 
 .btn {
@@ -67,7 +68,7 @@ form {
     gap: 20px;
     padding: 20px;
     background-color: var(--slate-300);
-    color: var(--slate-900);
+    color: var(--slate-700);
 }
 
 form>input {
@@ -109,10 +110,12 @@ table {
 th {
     margin: 10px;
     background: var(--slate-700);
+    color: var(--slate-100)
 }
 
 tr {
     height: 2.0rem;
+    color: var(--slate-700)
 }
 
 td,
@@ -156,11 +159,11 @@ th {
 
 
 tr {
-    background-color: var(--slate-500);
+    background-color: var(--slate-300);
 }
 
 tr:nth-child(even) {
-    background-color: var(--slate-300);
+    background-color: var(--slate-100);
     color: var(--slate-700)
 }
 
