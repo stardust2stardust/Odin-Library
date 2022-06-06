@@ -88,6 +88,12 @@ form>input {
     justify-content: center;
 }
 
+
+.rating input {
+    width: 35px;
+    margin-left: 5px;
+}
+
 .popup {
     position: absolute;
     top: 30%;
