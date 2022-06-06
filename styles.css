@@ -106,6 +106,30 @@ form>input {
     z-index: 3;
 }
 
+
+
+.rating-box {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    padding: 20px 10px;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    background-color: var(--slate-300);
+    color: var(--slate-700);
+
+}
+
+.rating2 button {
+    margin-left: 10px;
+}
+
+.rating2 input {
+    width: 40px;
+}
+
 table {
     width: 100%;
     margin-top: 50px;

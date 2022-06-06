@@ -5,12 +5,13 @@ const newBookBtn = document.querySelector('.new-book-btn')
 const updateBook = document.querySelector('#book-list');
 
 // Constructor // 
-function Book(title, author, pages, hasRead) {
+function Book(title, author, pages, hasRead, ratingOutput) {
     this.title = title
     this.author = author
     this.pages = pages
     this.hasRead = hasRead
     this.bookID = 'id' + (new Date()).getTime();
+    this.rating = ratingOutput
 }
 
 
@@ -57,6 +58,7 @@ function submitForm(e) {
     const author = document.querySelector('#author')
     const pages = document.querySelector('#pages')
     const hasRead = document.querySelector('input[name="readStatus"]:checked').value;
+    const rating = document.querySelector('#rating')
 
     if (title.value === '' || author.value === '' || pages.value === '') {
         showErrorMsg();
@@ -83,7 +85,14 @@ function submitForm(e) {
         form.classList.add('hide')
         newBookBtn.classList.remove('hide');
 
-        const newBook = new Book(title.value, author.value, pages.value, hasRead);
+        let ratingOutput;
+        if (hasRead === "--") {
+            ratingOutput = 'n/a'
+        } else {
+            ratingOutput = `${rating.value}/10`
+        }
+
+        const newBook = new Book(title.value, author.value, pages.value, hasRead, ratingOutput);
         addBookToLibrary(newBook);
         addBookToUI(newBook);
         clearForm();
@@ -160,7 +169,7 @@ function addBookToUI(newBook) {
     td4.innerText = newBook.hasRead;
     td4.classList.add('read-status')
     const td4b = document.createElement('td');
-    td4b.innerText = "X / 10";
+    td4b.innerText = newBook.rating;
     const td5 = document.createElement('td');
     td5.innerText = newBook.bookID;
     td5.classList.add('hide');
@@ -204,15 +213,20 @@ function changeStatus(e) {
     console.log(e.target.innerText)
 
     if (e.target.innerText === '--') {
-        e.target.innerHTML = '&#x2714'
+        e.target.innerHTML = '&#x2714';
+        rateBook(e);
+
     } else {
         e.target.innerText = '--'
     }
-    // if (e.target.classList.contains('read-status')) {
-    //     if (e.target.innerText === '--') {
-    //         e.target.innerText = '&#x2714';
-    //     }
-    // }
+}
+
+function rateBook(e) {
+    console.log('rateBook called');
+    console.log(e.target);
+    const ratingBox = e.target.nextElementSibling.nextElementSibling;
+    const ratingPopup = document.querySelector('.rating-box')
+    ratingPopup.classList.remove('hide')
 }
 
 
