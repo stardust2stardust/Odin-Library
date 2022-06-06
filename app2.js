@@ -2,7 +2,7 @@
 
 // DOM constants
 const newBookBtn = document.querySelector('.new-book-btn')
-const delBookBtn = document.querySelector('#book-list');
+const updateBook = document.querySelector('#book-list');
 
 // Constructor // 
 function Book(title, author, pages, hasRead) {
@@ -158,6 +158,7 @@ function addBookToUI(newBook) {
     td3.innerText = newBook.pages;
     const td4 = document.createElement('td');
     td4.innerText = newBook.hasRead;
+    td4.classList.add('read-status')
     const td4b = document.createElement('td');
     td4b.innerText = "X / 10";
     const td5 = document.createElement('td');
@@ -199,6 +200,21 @@ function delFromLibrary(bookID) {
 }
 
 
+function changeStatus(e) {
+    console.log(e.target.innerText)
+
+    if (e.target.innerText === '--') {
+        e.target.innerHTML = '&#x2714'
+    } else {
+        e.target.innerText = '--'
+    }
+    // if (e.target.classList.contains('read-status')) {
+    //     if (e.target.innerText === '--') {
+    //         e.target.innerText = '&#x2714';
+    //     }
+    // }
+}
+
 
 // Event: display books in UI
 document.addEventListener('DOMContentLoaded', showLibrary);
@@ -207,10 +223,23 @@ document.addEventListener('DOMContentLoaded', showLibrary);
 newBookBtn.addEventListener('click', showForm)
 
 // Event: Remove book from UI (and my library)
-delBookBtn.addEventListener('click', (e) => {
-    console.log('del button clicked');
-    delFromUI(e.target);
-    delFromLibrary(e.target.parentElement.previousElementSibling.innerText)
+updateBook.addEventListener('click', (e) => {
+    console.log(e.target)
+    // delete book
+    if (e.target.classList.contains('delete')) {
+        console.log('del button clicked');
+        delFromUI(e.target);
+        delFromLibrary(e.target.parentElement.previousElementSibling.innerText)
+    }
+
+    // changes read status
+    if (e.target.classList.contains('read-status')) {
+        console.log('status cell clicked')
+        changeStatus(e)
+    }
+
+
+
 });
 
 
