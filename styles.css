@@ -108,7 +108,7 @@ form>input {
 
 
 
-.rating-box {
+/* .rating-box {
     position: absolute;
     top: 30%;
     left: 50%;
@@ -128,13 +128,15 @@ form>input {
 
 .rating2 input {
     width: 40px;
-}
+} */
 
 table {
     width: 100%;
     margin-top: 50px;
     font-size: 1.2rem;
     text-align: left;
+    border-collapse: collapse;
+    border: none;
 }
 
 th {
@@ -150,7 +152,7 @@ tr {
 
 td,
 th {
-    padding-left: 3px;
+    padding-left: 10px;
 }
 
 .legend {
@@ -178,14 +180,37 @@ th {
     border: 1px solid green;
 }
 
+.read-status {
+    text-align: center;
+}
+
 .delete {
-    background-color: rgb(179, 44, 44);
+    background-color: rgb(172, 79, 79);
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
     padding: 2px;
     margin: 0px 5px;
+
 }
+
+
+.delete-column {
+    text-align: center;
+    width: 7%;
+    padding-right: 10px;
+}
+
+.pages-col {
+    text-align: right;
+}
+
+/* td a {
+    display: flex;
+    width: 30%;
+    justify-content: center;
+    
+} */
 
 
 tr {

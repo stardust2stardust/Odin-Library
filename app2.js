@@ -165,16 +165,18 @@ function addBookToUI(newBook) {
     td2.innerText = newBook.author;
     const td3 = document.createElement('td');
     td3.innerText = newBook.pages;
+    td3.classList.add('pages-col')
     const td4 = document.createElement('td');
     td4.innerText = newBook.hasRead;
     td4.classList.add('read-status')
-    const td4b = document.createElement('td');
-    td4b.innerText = newBook.rating;
+    // const td4b = document.createElement('td');
+    // td4b.innerText = newBook.rating;
     const td5 = document.createElement('td');
     td5.innerText = newBook.bookID;
     td5.classList.add('hide');
     const td6 = document.createElement('td');
     td6.innerHTML = '<a href="#" class="btn delete">X</a>';
+    td6.classList.add('delete-column')
 
 
     list.append(newRow);
@@ -182,7 +184,7 @@ function addBookToUI(newBook) {
     newRow.append(td2);
     newRow.append(td3);
     newRow.append(td4);
-    newRow.append(td4b)
+    // newRow.append(td4b)
     newRow.append(td5);
     newRow.append(td6);
 }
@@ -214,20 +216,38 @@ function changeStatus(e) {
 
     if (e.target.innerText === '--') {
         e.target.innerHTML = '&#x2714';
-        rateBook(e);
+        // const currentBookID = e.target.nextElementSibling.nextElementSibling.innerText
+        // rateBook(e, currentBookID);
 
     } else {
         e.target.innerText = '--'
     }
 }
 
-function rateBook(e) {
-    console.log('rateBook called');
-    console.log(e.target);
-    const ratingBox = e.target.nextElementSibling.nextElementSibling;
-    const ratingPopup = document.querySelector('.rating-box')
-    ratingPopup.classList.remove('hide')
-}
+// function rateBook(e, currentBookID) {
+//     console.log('rateBook called');
+//     console.log(e.target);
+//     const ratingCell = e.target.nextElementSibling;
+//     const rateBookID = e.target.nextElementSibling.nextElementSibling.innerText
+//     console.log(ratingCell)
+//     console.log(rateBookID);
+//     const ratingPopup = document.querySelector('.rating-box')
+//     ratingPopup.classList.remove('hide')
+//     const updateRatingBtn = document.querySelector('.update-rating')
+//     updateRatingBtn.addEventListener('click', (e) => {
+//         console.log(e.target.previousElementSibling.value)
+//         const ratingValue = e.target.previousElementSibling.value
+//         console.log(ratingValue)
+//         ratingPopup.classList.add('hide');
+//         if (currentBookID === rateBookID) {
+//             ratingCell.innerText = `${ratingValue}/10`
+//             console.log(ratingCell.innerText)
+//         }
+
+
+//     })
+
+// }
 
 
 // Event: display books in UI
