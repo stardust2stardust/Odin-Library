@@ -1,5 +1,6 @@
 :root {
     --slate-900: #0f172a;
+    --slate-800: #1e293b;
     --slate-700: #334155;
     --slate-500: #64748b;
     --slate-300: #cbd5e1;
@@ -14,11 +15,11 @@
 
 body {
     height: 100vh;
-    background: linear-gradient(var(--slate-900), var(--slate-700));
+    background: linear-gradient(var(--slate-700), var(--slate-700));
     color: var(--slate-100);
     display: flex;
     justify-content: center;
-
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 .container {
@@ -28,6 +29,7 @@ body {
     align-items: center;
     margin-top: 50px;
     padding: 0px 5px;
+
 }
 
 h1 {
@@ -36,7 +38,7 @@ h1 {
 }
 
 .btn {
-    background-color: rgb(82, 29, 143);
+    background-color: rgb(54, 117, 117);
     color: whitesmoke;
     border: none;
     padding: 5px;
@@ -141,13 +143,14 @@ table {
 
 th {
     margin: 10px;
-    background: var(--slate-700);
+    background: var(--slate-900);
     color: var(--slate-100)
 }
 
 tr {
     height: 2.0rem;
-    color: var(--slate-700)
+    background-color: var(--slate-900);
+    color: var(--slate-300)
 }
 
 td,
@@ -214,14 +217,14 @@ th {
 } */
 
 
-tr {
+/* tr {
     background-color: var(--slate-300);
 }
 
 tr:nth-child(even) {
     background-color: var(--slate-100);
     color: var(--slate-700)
-}
+} */
 
 @media screen and (max-width: 800px) {
     .container {
