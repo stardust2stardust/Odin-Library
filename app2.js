@@ -5,13 +5,14 @@ const newBookBtn = document.querySelector('.new-book-btn')
 const updateBook = document.querySelector('#book-list');
 
 // Constructor // 
-function Book(title, author, pages, hasRead, ratingOutput) {
+function Book(title, author, pages, hasRead, ratingOutput, date) {
     this.title = title
     this.author = author
     this.pages = pages
     this.hasRead = hasRead
     this.bookID = 'id' + (new Date()).getTime();
     this.rating = ratingOutput
+    this.date = date
 }
 
 
@@ -67,7 +68,8 @@ function submitForm(e) {
     const author = document.querySelector('#author')
     const pages = document.querySelector('#pages')
     const hasRead = document.querySelector('input[name="readStatus"]:checked').value;
-    const rating = document.querySelector('#rating')
+    const rating = document.querySelector('#rating');
+    const date = document.querySelector('#date')
 
     if (title.value === '' || author.value === '' || pages.value === '') {
         showErrorMsg();
@@ -107,7 +109,14 @@ function submitForm(e) {
             ratingOutput = starOutput;
         }
 
-        const newBook = new Book(title.value, author.value, pages.value, hasRead, ratingOutput);
+        let dateOutput;
+        if (date.value === '') {
+            dateOutput = 'tbd'
+        } else {
+            dateOutput = date.value;
+        }
+
+        const newBook = new Book(title.value, author.value, pages.value, hasRead, ratingOutput, dateOutput);
         addBookToLibrary(newBook);
         addBookToUI(newBook);
         clearForm();
@@ -189,9 +198,12 @@ function addBookToUI(newBook) {
     const td4 = document.createElement('td');
     td4.innerText = newBook.hasRead;
     td4.classList.add('read-status')
+    const td4a = document.createElement('td');
+    td4a.innerText = newBook.date;
+    td4a.classList.add('date-col');
     const td4b = document.createElement('td');
-
     td4b.innerText = newBook.rating
+    td4b.classList.add('rating-col');
     const td5 = document.createElement('td');
     td5.innerText = newBook.bookID;
     td5.classList.add('hide');
@@ -205,6 +217,7 @@ function addBookToUI(newBook) {
     newRow.append(td2);
     newRow.append(td3);
     newRow.append(td4);
+    newRow.append(td4a)
     newRow.append(td4b)
     newRow.append(td5);
     newRow.append(td6);
@@ -246,31 +259,6 @@ function changeStatus(e) {
     }
 }
 
-// function rateBook(e, currentBookID) {
-//     console.log('rateBook called');
-//     console.log(e.target);
-//     const ratingCell = e.target.nextElementSibling;
-//     const rateBookID = e.target.nextElementSibling.nextElementSibling.innerText
-//     console.log(ratingCell)
-//     console.log(rateBookID);
-//     const ratingPopup = document.querySelector('.rating-box')
-//     ratingPopup.classList.remove('hide')
-//     const updateRatingBtn = document.querySelector('.update-rating')
-//     updateRatingBtn.addEventListener('click', (e) => {
-//         console.log(e.target.previousElementSibling.value)
-//         const ratingValue = e.target.previousElementSibling.value
-//         console.log(ratingValue)
-//         ratingPopup.classList.add('hide');
-//         if (currentBookID === rateBookID) {
-//             ratingCell.innerText = `${ratingValue}/10`
-//             console.log(ratingCell.innerText)
-//         }
-
-
-//     })
-
-// }
-
 
 // Event: display books in UI
 document.addEventListener('DOMContentLoaded', showLibrary);
@@ -288,15 +276,14 @@ updateBook.addEventListener('click', (e) => {
         delFromLibrary(e.target.parentElement.previousElementSibling.innerText)
     }
 
-    // changes read status
+    // changes read status in UI
     if (e.target.classList.contains('read-status')) {
         console.log('status cell clicked')
         changeStatus(e)
     }
 
-    // update Rating
-    if (e.target.innerText === "n/a") {
-        console.log('n/a clicked');
+    // update Rating in UI 
+    if (e.target.classList.contains('rating-col')) {
         const ratingToUpdate = e.target;
         let newRatingInput = document.createElement('input');
         newRatingInput.classList.add('rating-input-box');
@@ -309,7 +296,7 @@ updateBook.addEventListener('click', (e) => {
         ratingToUpdate.append(newRatingInput)
         ratingToUpdate.append(newRatingBtn)
         newRatingBtn.addEventListener('click', () => {
-            ratingValue = newRatingInput.value;
+            let ratingValue = newRatingInput.value;
             ratingToUpdate.innerText = ``
             let numOfStars = parseInt(ratingValue);
             let star = '\u2605';
@@ -318,15 +305,24 @@ updateBook.addEventListener('click', (e) => {
                 starOutput += star
             }
             ratingToUpdate.innerText = starOutput;
-        })
-
-
-
-
-
-
+        });
     }
-
+    if (e.target.classList.contains('date-col')) {
+        const dateToUpdate = e.target;
+        console.log(dateToUpdate.innerText)
+        let newDateInput = document.createElement('input')
+        newDateInput.classList.add('date-input-box')
+        newDateInput.setAttribute('type', 'date');
+        let newDateBtn = document.createElement('button');
+        newDateBtn.innerText = "Ok"
+        dateToUpdate.innerText = '';
+        dateToUpdate.append(newDateInput)
+        dateToUpdate.append(newDateBtn)
+        newDateBtn.addEventListener('click', () => {
+            let dateValue = newDateInput.value;
+            dateToUpdate.innerText = dateValue;
+        })
+    }
 
 });
 

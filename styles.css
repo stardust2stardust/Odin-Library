@@ -188,6 +188,14 @@ th {
     cursor: pointer;
 }
 
+.date-col {
+    cursor: pointer;
+}
+
+.rating-col {
+    cursor: pointer;
+}
+
 .delete {
     background-color: rgb(172, 79, 79);
     color: white;
@@ -211,6 +219,10 @@ th {
 
 .rating-input-box {
     width: 30px;
+}
+
+.date-input-box {
+    width: 140px;
 }
 
 /* td a {
