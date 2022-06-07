@@ -148,7 +148,7 @@ th {
 }
 
 tr {
-    height: 2.0rem;
+    height: 2.5rem;
     background-color: var(--slate-900);
     color: var(--slate-300)
 }
