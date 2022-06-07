@@ -98,7 +98,13 @@ function submitForm(e) {
         if (hasRead === "--") {
             ratingOutput = 'n/a'
         } else {
-            ratingOutput = `${rating.value}/10`
+            let star = '\u2605';
+            let starOutput = '';
+            ratingNumValue = parseInt(rating.value)
+            for (let i = 0; i < ratingNumValue; i++) {
+                starOutput += star
+            }
+            ratingOutput = starOutput;
         }
 
         const newBook = new Book(title.value, author.value, pages.value, hasRead, ratingOutput);
@@ -184,7 +190,8 @@ function addBookToUI(newBook) {
     td4.innerText = newBook.hasRead;
     td4.classList.add('read-status')
     const td4b = document.createElement('td');
-    td4b.innerText = newBook.rating;
+
+    td4b.innerText = newBook.rating
     const td5 = document.createElement('td');
     td5.innerText = newBook.bookID;
     td5.classList.add('hide');
@@ -287,6 +294,7 @@ updateBook.addEventListener('click', (e) => {
         changeStatus(e)
     }
 
+    // update Rating
     if (e.target.innerText === "n/a") {
         console.log('n/a clicked');
         const ratingToUpdate = e.target;
@@ -294,7 +302,7 @@ updateBook.addEventListener('click', (e) => {
         newRatingInput.classList.add('rating-input-box');
         newRatingInput.setAttribute('type', 'number')
         newRatingInput.setAttribute('min', '1')
-        newRatingInput.setAttribute('max', '10')
+        newRatingInput.setAttribute('max', '5')
         let newRatingBtn = document.createElement('button')
         newRatingBtn.innerText = "Ok"
         ratingToUpdate.innerText = "";
@@ -302,11 +310,18 @@ updateBook.addEventListener('click', (e) => {
         ratingToUpdate.append(newRatingBtn)
         newRatingBtn.addEventListener('click', () => {
             ratingValue = newRatingInput.value;
-            ratingToUpdate.innerText = `${ratingValue} / 10`
+            ratingToUpdate.innerText = ``
+            let numOfStars = parseInt(ratingValue);
+            let star = '\u2605';
+            let starOutput = '';
+            for (let i = 0; i < numOfStars; i++) {
+                starOutput += star
+            }
+            ratingToUpdate.innerText = starOutput;
         })
 
 
-        // ratingToUpdate.innerText = newRatingInput.value
+
 
 
 
