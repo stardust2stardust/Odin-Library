@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gentium+Plus&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>Book List</title>
 </head>
@@ -42,11 +45,11 @@
 
 
             </div>
-            <!-- <div class="form-group rating">
-                <label for="rating">Rating (1-10), if read:
-                    <input type="number" id="rating" name="rating" min="1" max="10">
+            <div class="form-group rating">
+                <label for="rating">Rating (1-5), if read:
+                    <input type="number" id="rating" name="rating" min="1" max="5">
                 </label>
-            </div> -->
+            </div>
             <div class="button-group">
                 <input type="submit" value="Add to Library" class="btn form-submit-btn">
                 <input type="button" value="Cancel" class="btn form-cancel-btn">
@@ -69,15 +72,15 @@
                     <th>Author</th>
                     <th class="pages-col">Pages</th>
                     <th class="read-status">Status</th>
-                    <!-- <th>Rating</th> -->
+                    <th>Rating</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody id="book-list"></tbody>
         </table>
         <div class="legend">
-            <p>"&#x2714" : read</p>
-            <p>"--" : not read; click to change once book has been read</p>
+            <p>&#x2714 : read</p>
+            <p>-- : not read; click to change once book has been read</p>
         </div>
     </div>
     <script src="app2.js"></script>

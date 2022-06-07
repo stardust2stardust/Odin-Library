@@ -94,14 +94,14 @@ function submitForm(e) {
         form.classList.add('hide')
         newBookBtn.classList.remove('hide');
 
-        // let ratingOutput;
-        // if (hasRead === "--") {
-        //     ratingOutput = 'n/a'
-        // } else {
-        //     ratingOutput = `${rating.value}/10`
-        // }
+        let ratingOutput;
+        if (hasRead === "--") {
+            ratingOutput = 'n/a'
+        } else {
+            ratingOutput = `${rating.value}/10`
+        }
 
-        const newBook = new Book(title.value, author.value, pages.value, hasRead);
+        const newBook = new Book(title.value, author.value, pages.value, hasRead, ratingOutput);
         addBookToLibrary(newBook);
         addBookToUI(newBook);
         clearForm();
@@ -183,8 +183,8 @@ function addBookToUI(newBook) {
     const td4 = document.createElement('td');
     td4.innerText = newBook.hasRead;
     td4.classList.add('read-status')
-    // const td4b = document.createElement('td');
-    // td4b.innerText = newBook.rating;
+    const td4b = document.createElement('td');
+    td4b.innerText = newBook.rating;
     const td5 = document.createElement('td');
     td5.innerText = newBook.bookID;
     td5.classList.add('hide');
@@ -198,7 +198,7 @@ function addBookToUI(newBook) {
     newRow.append(td2);
     newRow.append(td3);
     newRow.append(td4);
-    // newRow.append(td4b)
+    newRow.append(td4b)
     newRow.append(td5);
     newRow.append(td6);
 }
@@ -230,6 +230,7 @@ function changeStatus(e) {
 
     if (e.target.innerText === '--') {
         e.target.innerHTML = '&#x2714';
+
         // const currentBookID = e.target.nextElementSibling.nextElementSibling.innerText
         // rateBook(e, currentBookID);
 
@@ -286,6 +287,30 @@ updateBook.addEventListener('click', (e) => {
         changeStatus(e)
     }
 
+    if (e.target.innerText === "n/a") {
+        console.log('n/a clicked');
+        const ratingToUpdate = e.target;
+        let newRatingInput = document.createElement('input');
+        newRatingInput.classList.add('rating-input-box');
+        newRatingInput.setAttribute('type', 'number')
+        newRatingInput.setAttribute('min', '1')
+        newRatingInput.setAttribute('max', '10')
+        let newRatingBtn = document.createElement('button')
+        newRatingBtn.innerText = "Ok"
+        ratingToUpdate.innerText = "";
+        ratingToUpdate.append(newRatingInput)
+        ratingToUpdate.append(newRatingBtn)
+        newRatingBtn.addEventListener('click', () => {
+            ratingValue = newRatingInput.value;
+            ratingToUpdate.innerText = `${ratingValue} / 10`
+        })
+
+
+        // ratingToUpdate.innerText = newRatingInput.value
+
+
+
+    }
 
 
 });

@@ -19,7 +19,7 @@ body {
     color: var(--slate-100);
     display: flex;
     justify-content: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family: 'Gentium Plus', serif;
 }
 
 .container {
@@ -207,6 +207,10 @@ th {
 
 .pages-col {
     text-align: right;
+}
+
+.rating-input-box {
+    width: 30px;
 }
 
 /* td a {
