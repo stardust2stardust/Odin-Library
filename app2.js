@@ -97,8 +97,10 @@ function submitForm(e) {
         newBookBtn.classList.remove('hide');
 
         let ratingOutput;
+        let dateOutput;
         if (hasRead === "--") {
-            ratingOutput = 'n/a'
+            ratingOutput = 'n/a';
+            dateOutput = 'tbd'
         } else {
             let star = '\u2605';
             let starOutput = '';
@@ -107,14 +109,15 @@ function submitForm(e) {
                 starOutput += star
             }
             ratingOutput = starOutput;
+            dateOutput = date.value
         }
 
-        let dateOutput;
-        if (date.value === '') {
-            dateOutput = 'tbd'
-        } else {
-            dateOutput = date.value;
-        }
+
+        // if (date.value === '') {
+        //     dateOutput = 'tbd'
+        // } else {
+        //     dateOutput = date.value;
+        // }
 
         const newBook = new Book(title.value, author.value, pages.value, hasRead, ratingOutput, dateOutput);
         addBookToLibrary(newBook);
@@ -212,6 +215,8 @@ function addBookToUI(newBook) {
 
     list.append(newRow);
     newRow.append(td1, td2, td3, td4, td4a, td4b, td5, td6);
+
+
 }
 
 
@@ -298,15 +303,22 @@ function changeDateUI(dateToUpdate, bookID) {
     newDateInput.classList.add('date-input-box')
     newDateInput.setAttribute('type', 'date');
     let newDateBtn = document.createElement('button');
+    let dateCancelBtn = document.createElement('button');
     newDateBtn.innerText = "Ok"
+    dateCancelBtn.innerText = "X"
+    let origDateText = dateToUpdate.innerText
     dateToUpdate.innerText = '';
     dateToUpdate.append(newDateInput)
-    dateToUpdate.append(newDateBtn)
+    dateToUpdate.append(newDateBtn, dateCancelBtn)
     newDateBtn.addEventListener('click', () => {
         let dateValue = newDateInput.value;
         dateToUpdate.innerText = dateValue;
         changeDateLibrary(bookID, dateValue)
     });
+
+    dateCancelBtn.addEventListener('click', () => {
+        dateToUpdate.innerText = origDateText
+    })
 }
 
 function changeDateLibrary(bookID, dateValue) {
@@ -331,7 +343,7 @@ updateBook.addEventListener('click', (e) => {
     // console.log('Clicked Item: ', e.target)
     // delete book
     if (e.target.classList.contains('delete')) {
-        console.log('del button clicked');
+        // console.log('del button clicked');
         delFromUI(e.target);
         delFromLibrary(e.target.parentElement.previousElementSibling.innerText)
     }

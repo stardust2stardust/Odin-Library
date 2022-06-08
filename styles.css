@@ -34,16 +34,20 @@ body {
 
 h1 {
     padding: 20px;
-    color: var(--slate-100)
+    color: var(--slate-300);
+    letter-spacing: 0.2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 
 .btn {
-    background-color: rgb(54, 117, 117);
-    color: whitesmoke;
+    background-color: #4D908E;
+    color: var(--slate-100);
     border: none;
     padding: 5px;
     font-size: 1rem;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 input[type='radio'] {
@@ -96,77 +100,6 @@ form>input {
     margin-left: 5px;
 }
 
-.popup {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30%;
-    padding: 20px 10px;
-    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
-    z-index: 3;
-}
-
-
-
-/* .rating-box {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20%;
-    padding: 20px 10px;
-    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
-    background-color: var(--slate-300);
-    color: var(--slate-700);
-
-}
-
-.rating2 button {
-    margin-left: 10px;
-}
-
-.rating2 input {
-    width: 40px;
-} */
-
-table {
-    width: 100%;
-    margin-top: 50px;
-    font-size: 1.2rem;
-    text-align: left;
-    border-collapse: collapse;
-    border: none;
-}
-
-th {
-    margin: 10px;
-    background: var(--slate-900);
-    color: var(--slate-100)
-}
-
-tr {
-    height: 2.5rem;
-    background-color: var(--slate-900);
-    color: var(--slate-300)
-}
-
-td,
-th {
-    padding-left: 10px;
-}
-
-.legend {
-    margin-top: 15px;
-    align-self: flex-start;
-}
-
-.hide {
-    display: none;
-}
-
 .success {
     color: green;
 }
@@ -183,38 +116,101 @@ th {
     border: 1px solid green;
 }
 
-.read-status {
-    text-align: center;
-    cursor: pointer;
+.popup {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    padding: 20px 10px;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    z-index: 3;
 }
 
-.date-col {
-    cursor: pointer;
+table {
+    width: 100%;
+    margin-top: 50px;
+    font-size: 1.2rem;
+    text-align: left;
+    border-collapse: collapse;
+    border: none;
 }
 
-.rating-col {
-    cursor: pointer;
+th {
+    margin: 10px;
+    background: var(--slate-900);
+    color: var(--slate-300);
+    vertical-align: bottom;
+
+}
+
+tr {
+    height: 2.5rem;
+    background-color: var(--slate-900);
+    color: var(--slate-300)
+}
+
+td,
+th {
+    padding-left: 10px;
 }
 
 .delete {
-    background-color: rgb(172, 79, 79);
-    color: white;
+    background-color: #b62c2e;
+    color: var(--slate-100);
     text-decoration: none;
-    font-size: 1.2rem;
-    padding: 2px;
-    margin: 0px 5px;
-
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0 2px;
+    vertical-align: middle;
+    margin: 3px 0;
 }
 
+.date-col-heading {
+    width: 15%;
+}
 
-.delete-column {
+.status-col-heading {
     text-align: center;
-    width: 7%;
-    padding-right: 10px;
+}
+
+.title-col {
+    width: 25%;
+}
+
+.author-col {
+    width: 20%
 }
 
 .pages-col {
     text-align: right;
+    width: 10%;
+}
+
+.read-status {
+    text-align: center;
+    cursor: pointer;
+    width: 10%;
+    color: #43AA8B;
+}
+
+.date-col {
+    cursor: pointer;
+    width: 15%;
+}
+
+.rating-col {
+    cursor: pointer;
+    width: 15%;
+    color: #F9C74F;
+
+}
+
+.delete-column {
+    text-align: center;
+    width: 5%;
+    padding-right: 10px;
 }
 
 .rating-input-box {
@@ -225,22 +221,15 @@ th {
     width: 140px;
 }
 
-/* td a {
-    display: flex;
-    width: 30%;
-    justify-content: center;
-    
-} */
-
-
-/* tr {
-    background-color: var(--slate-300);
+.legend {
+    margin-top: 15px;
+    align-self: flex-start;
 }
 
-tr:nth-child(even) {
-    background-color: var(--slate-100);
-    color: var(--slate-700)
-} */
+.hide {
+    display: none;
+}
+
 
 @media screen and (max-width: 800px) {
     .container {
