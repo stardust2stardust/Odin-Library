@@ -176,11 +176,11 @@ th {
 }
 
 .title-col {
-    width: 25%;
+    width: 20%;
 }
 
 .author-col {
-    width: 20%
+    width: 15%
 }
 
 .pages-col {
@@ -197,7 +197,7 @@ th {
 
 .date-col {
     cursor: pointer;
-    width: 15%;
+    width: 25%;
 }
 
 .rating-col {
