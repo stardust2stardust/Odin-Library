@@ -253,7 +253,8 @@ function changeStatusLibrary(bookID) {
     myLibrary.forEach((book) => {
         if (book.bookID === bookID) {
             if (book.hasRead === '--') {
-                book.hasRead = '&#x2714';
+                let checkMark = '\u2714'
+                book.hasRead = checkMark;
             } else {
                 book.hasRead = '--';
             }
