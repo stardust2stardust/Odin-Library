@@ -33,11 +33,17 @@ body {
 }
 
 h1 {
-    padding: 20px;
+    padding: 20px 0 20px 0;
     color: var(--slate-300);
-    letter-spacing: 0.2rem;
+
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 400;
+    margin: 0;
+
+}
+
+.book-icon {
+    font-size: 2.0rem;
 }
 
 .btn {
